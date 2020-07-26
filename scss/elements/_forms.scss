@@ -1,0 +1,123 @@
+/* Forms */
+// form elements
+// text/number/password
+// select
+// radio
+// checkbox
+// labels
+// textarea
+// disabled
+// focus
+// required
+
+.input__field{
+	border:1px solid $light--gray;
+	@include border-radius(5px);
+	display: block;
+	margin-bottom: 1em;
+	padding: 0.46em;
+	transition: all 0.3s ease-in-out;	
+	width: 100%;
+
+	&:focus{
+		border-color:shade($light--gray, 42%);
+	}	
+	&:disabled{
+		background: tint($light--gray, 70%);
+		color:tint($light--gray, 60%);
+	}
+}
+
+// labels
+.field__label{
+	font-size:0.875em;
+	color:$medium--gray;
+}
+
+// radio and checkboxes
+input[type=checkbox], input[type=radio]{
+	margin-right: 0.3em;
+}
+
+// styled radio & checkbox
+.input__radiocheckbox{	
+	margin-bottom: 1em;
+
+	input[type=radio],input[type=checkbox]{
+		display: none;
+	}
+	input[type=radio] + label, input[type=checkbox] + label{
+		color:$medium--gray;		
+		cursor: pointer;
+		display: block;
+		position: relative;
+		padding-left: 25px;
+	}
+
+	// Checkbox styling 
+	input[type=checkbox] + label{
+		&:before{
+			border:1px solid shade($light--gray, 42%);			
+			content:'';
+			height: 20px;
+			left: 0;
+			position:absolute;
+			transition: all 0.2s ease-in;
+			width: 20px;
+		}
+	}
+	input[type=checkbox]:checked + label{
+		&:before{
+  		border-color:$color--success;
+  		border-width:2px;
+  		border-right-style: none;
+			border-top-style: none;
+			height: 11px;
+			transform: rotate(-45deg);
+		}
+	}
+
+	// Radio styling 
+	input[type=radio] + label{
+		&:after, &:before{
+			border:1px solid shade($light--gray, 42%);
+			@include border-radius(100%);
+			content:'';
+			height: 20px;
+			left: 0;
+			position:absolute;
+			width: 20px;
+		}
+		&:before{
+			background:$color--success;
+			transform: scale(0);
+			transition: all 0.2s ease-in;
+		}
+	}
+	input[type=radio]:checked + label{
+		&:before{
+			transform: scale(.5);			
+		}
+	}
+
+	&--inline{
+		display: inline-block;
+    margin-right: 1em;
+	}
+}
+// field groups
+.field__group{}
+.field__group--inline{
+	.field__label, .input__field{
+		display: inline-block;
+		width: auto;
+	}
+}
+
+// modifiers
+.input--error{
+	border-color:$color--error;
+}
+.input--success{
+	border-color:$color--success;
+}

@@ -1,0 +1,52 @@
+/* Tables */
+// regular table
+// Striped rows
+// highlight tr on hover
+table{
+	border-collapse:collapse;
+	margin-bottom: 2em;
+	width: 100%;	
+
+	th{
+		border-top: 1px solid $light--gray;
+		border-bottom: 2px solid $light--gray;	
+		padding: .75em;
+		text-align:left;
+	}
+	td{
+		border-top: 1px solid $light--gray;
+		font-size: 0.85em;
+		padding: .75em;
+	}
+
+	// Borderless table
+	&.table--borderless{
+		td{
+			border-top-style:none;
+		}
+	}
+	
+	// striped table
+	&.table--striped{
+		tr:nth-child(even){
+			background: $light--gray;
+		}
+	}
+
+	// highlight table
+	&.table--highlight{
+		tr{
+			transition: background 0.3s ease-in-out;
+		}
+		tr:hover{
+			background: $light--gray;
+		}
+	}
+
+	// always show thicker top border for footer th's
+	tfoot{
+		th{
+			border-top: 2px solid $light--gray;
+		}
+	}
+}
