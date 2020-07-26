@@ -85,9 +85,38 @@ $(document).ready(function(){
     $('.navigation').toggleClass('navigation--open');
     $('.menu-btn').toggleClass('open');
   })
-
    
 })
+
+// Run navigation entry animation on desktop only
+const animateCSS = (element, animation) =>
+  // We create a Promise and return it
+  new Promise((resolve, reject) => {
+    const animationName = `${animation}`;
+    const node = document.querySelector(element);
+
+    node.classList.add(`animated`, animationName);
+
+    // When the animation ends, we clean the classes and resolve the Promise
+    function handleAnimationEnd() {
+      node.classList.remove(`animated`, animationName);
+      node.removeEventListener('animationend', handleAnimationEnd);
+
+      resolve('Animation ended');
+    }
+
+    node.addEventListener('animationend', handleAnimationEnd);
+  });
+
+// check window size and run if is desktop
+var isDesktop = window.innerWidth;
+if (isDesktop > 1200) {
+  animateCSS('.navigation', 'fadeInLeft')
+}
+
+
+
+
 
 // start rotating intro line
 //set animation timing
