@@ -89,6 +89,16 @@
 			grid-template-rows: 40% 60%;
 		}
 	}
+	
+	@include for-size(phone-only ) {
+		&__about {
+	    grid-template-rows: 45vh 30vh 25vh;
+    	grid-template-areas:
+        "intro intro"
+        "about about"
+        "contact profile";
+    }
+  }
 }
 
 /*  PORTFOLIO SECTION *********************************/

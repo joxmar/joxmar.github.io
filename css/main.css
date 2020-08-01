@@ -751,6 +751,10 @@ p {
     .grid__portfolio {
       grid-template-columns: 1fr;
       grid-template-rows: 40% 60%; } }
+  @media only screen and (max-width: 500px) {
+    .grid__about {
+      grid-template-rows: 45vh 30vh 25vh;
+      grid-template-areas: "intro intro" "about about" "contact profile"; } }
 
 /*  PORTFOLIO SECTION *********************************/
 .intro {
