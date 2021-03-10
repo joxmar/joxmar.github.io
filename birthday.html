@@ -18,7 +18,6 @@
     document.createElement("time");
   </script>
 <![endif]-->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body>
 	<header>
@@ -30,5 +29,12 @@
 		</article>
 	</main>
 	<footer></footer>	
+	<script>
+		// get name from parameters
+		const queryString = window.location.search;
+		const urlParams = new URLSearchParams(queryString);
+		const festejado = urlParams.get('name') // url must have "name" parameter
+		console.log(festejado);
+	</script>
 </body>
 </html> 
