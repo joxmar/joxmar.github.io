@@ -18,6 +18,10 @@
     document.createElement("time");
   </script>
 <![endif]-->
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 <style>
 	:root {
   --main-color: #300030;
@@ -167,9 +171,9 @@ h2 {
 	font-family: 'novecento_sans_bold', sans-serif;
   color: white;
   width: 100%;
-	max-width: 960px;
+	max-width: 860px;
 	text-transform: uppercase;
-	font-size: clamp(26px,1.667em,30px);
+	font-size: clamp(22px,1.3em,26px);
 	letter-spacing: .25em;
 	padding: .5em 0;
 }
@@ -184,13 +188,47 @@ h2 {
 	background: var(--sixth-color);
   font-family: 'novecento_sans_bold', sans-serif;
 	text-transform:uppercase;
+	cursor: pointer;
 	color: var(--main-color);
 	border: 0;
 	letter-spacing: 0.2em;
 	padding: 1em 1.5em;
+	opacity: 0;
+	visibility: hidden;
+	transition: all .3s ease-in-out;
 	font-size: clamp(23px, 1em, 30px);
 	margin-top: 10vh;
 }
+
+.show-button {
+	opacity: 1;
+	visibility: visible;
+}
+
+.name-letter-1,
+.name-letter-5,
+.name-letter-9 {
+	color: var(--sixth-color);
+}
+
+.name-letter-2,
+.name-letter-6,
+.name-letter-10 {
+	color: var(--fifth-color);
+}
+
+.name-letter-3,
+.name-letter-7,
+.name-letter-11 {
+	color: var(--third-color);
+}
+
+.name-letter-4,
+.name-letter-8,
+.name-letter-12 {
+	color: white;
+}
+
 
 /*********************************
 Media Queries Desktop first
@@ -217,18 +255,117 @@ Media Queries Desktop first
 	<div class="circles circle-2"></div>
 	<div class="circles circle-3"></div>
 	<div class="circles circle-4"></div>
+	<!--  -->
 	<main class="container">
-		<h1>HAPPY BIRTHDAY</h1>
-		<h2 id="theName" class="name">jorge</h2>
-		<div class="best-wish">Best wishes on your special day <br> <span>from Jorge</span></div>
-		<button class="play-again">again! again!</button>
+		<h1 class="animate__animated animate__backInDown">HAPPY BIRTHDAY</h1>
+		<h2 id="theName" class="name animate__animated animate__flipInX animate__delay-1s"></h2>
+		<div class="best-wish animate__animated animate__flipInY animate__delay-2s">Best wishes on your special day <br> <span>from Jorge</span></div>
+		<button id="againBtn" class="play-again">again! again!</button>
 	</main>
+	<!-- Amazing confetti JS library, special thanks to Kiril Vatev
+	https://www.kirilv.com/canvas-confetti/  -->
+	<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 	<script>
+		// Get element ready
+		var nameEl = document.getElementById('theName');
 		// get name from parameters
 		const queryString = window.location.search;
 		const urlParams = new URLSearchParams(queryString);
 		const festejado = urlParams.get('name') // url must have "name" parameter
-		console.log(festejado);
+
+		// Let's split the name
+		var splitName = festejado.split('');
+
+		// add letters to h2 tag
+		var letterCount = 1;
+		splitName.forEach(function(letter){
+			var theSpan = document.createElement('span');
+			var theLetter = document.createTextNode(letter);
+			theSpan.classList.add('name-letter-' + letterCount);
+			theSpan.appendChild(theLetter);
+			nameEl.appendChild(theSpan);
+			letterCount++;
+		});
+
+
+		//  confetti
+		var count = 400;
+		var defaults = {
+		  origin: { y: 0.7 }
+		};
+		var end = Date.now() + (8 * 1000); // 8 secs side explsions
+
+		// middle explosion
+		function fire(particleRatio, opts){
+			confetti(Object.assign({}, defaults, opts, {
+		    particleCount: Math.floor(count * particleRatio)
+		  }));
+		}
+
+		function lightItUp(){
+			fire(0.25, {
+			  spread: 26,
+			  startVelocity: 55,
+			});
+			fire(0.2, {
+			  spread: 60,
+			});
+			fire(0.35, {
+			  spread: 100,
+			  decay: 0.91,
+			  scalar: 0.8
+			});
+			fire(0.1, {
+			  spread: 120,
+			  startVelocity: 25,
+			  decay: 0.92,
+			  scalar: 1.2
+			});
+			fire(0.1, {
+			  spread: 120,
+			  startVelocity: 45,
+			});
+
+			setTimeout(function(){
+				sideExplosion();
+			},1500)
+		}
+
+		function sideExplosion() {
+		  confetti({
+		    particleCount: 2,
+		    angle: 60,
+		    spread: 55,
+		    origin: { x: 0 }
+		    // colors: colors
+		  });
+		  confetti({
+		    particleCount: 2,
+		    angle: 120,
+		    spread: 55,
+		    origin: { x: 1 }
+		    // colors: colors
+		  });
+
+		  if (Date.now() < end) {
+		    requestAnimationFrame(sideExplosion);
+		  }
+		};
+
+		// OnLoad
+		setTimeout(function(){
+			lightItUp();
+		}, 3000);
+
+		// button stuff
+		var againBtn = document.getElementById('againBtn');
+		againBtn.addEventListener('click',function(){
+			window.location.reload();
+		})
+
+		setTimeout(function(){
+			againBtn.classList.add('show-button');
+		}, 10000);
 	</script>
 </body>
 </html> 
