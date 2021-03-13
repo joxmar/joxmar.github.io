@@ -205,6 +205,25 @@ h2 {
 	visibility: visible;
 }
 
+/* ios clamp fallback*/
+@supports (-webkit-touch-callout: none){
+	h1 {
+		font-size: min(max(40px, 3em), 60px);
+	}
+	h2 {
+		font-size: min(max(100px, 6em), 160px);
+	}
+	.best-wish {
+		font-size: min(max(22px, 1.3em), 26px);
+	}
+	.best-wish span {
+		font-size: min(max(16px, 1em), 20px);
+	}
+	.play-again {
+		font-size: min(max(23px, 1em), 30px);
+	}
+}
+
 .name-letter-1,
 .name-letter-5,
 .name-letter-9 {
