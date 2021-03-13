@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Is your Birthday!</title>
+<title></title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
@@ -272,6 +272,9 @@ Media Queries Desktop first
 		const queryString = window.location.search;
 		const urlParams = new URLSearchParams(queryString);
 		const festejado = urlParams.get('name') // url must have "name" parameter
+
+		// Update page title
+		document.title = "🎊 " + festejado + ', Happy Birthday, you rockstar 🎊';
 
 		// Let's split the name
 		var splitName = festejado.split('');
