@@ -392,5 +392,17 @@ Media Queries Desktop first
 			againBtn.classList.add('show-button');
 		}, 10000);
 	</script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-85900600-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+
+	  var whoVisited = '/birthday=' + festejado ;
+	  gtag('js', new Date());
+	  gtag('config', 'UA-85900600-1', {'page_path': whoVisited});
+	</script>
+
 </body>
 </html> 
