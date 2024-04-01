@@ -245,6 +245,7 @@ opacity: 1;
   opacity: .25;
   position: absolute;
   transform: translate(-5%, -110%);
+  text-transform: uppercase;
 
   @include for-size(tablet-landscape-up) {
     font-size: 6vw;

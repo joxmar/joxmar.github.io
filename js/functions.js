@@ -2,8 +2,8 @@ $(document).ready(function(){
   var isAnimatedGoingUp = $('.sch .animated--going-up');
   var isAnimatedGoingdown = $('.sch .animated--going-down');
 
-  var isAnimatedGoingUp5226 = $('.elm .animated--going-up');
-  var isAnimatedGoingdown5226 = $('.elm .animated--going-down');
+  var isAnimatedGoingUp5226 = $('.oll .animated--going-up');
+  var isAnimatedGoingdown5226 = $('.oll .animated--going-down');
 
   var isAnimatedGoingUpLxr = $('.lxr .animated--going-up');
   var isAnimatedGoingdownLxr = $('.lxr .animated--going-down');
@@ -34,7 +34,7 @@ $(document).ready(function(){
     // navigation: true,
     keyboardScrolling: true,
     easingcss3:"ease-in-out",
-    anchors:["intro","sch","fifty","lxr","be","ezres","carmana","aruba","times","hair"],
+    anchors:["intro","oll","sch","lxr","be","ezres","carmana","aruba","times","hair"],
     css3: true,
     menu: '.nav',
     controlArrows: true,
