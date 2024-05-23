@@ -1,0 +1,60 @@
+:root {
+  /*  we need to have the same exact spacing on some areas so the animation is smotth  */
+  --gap: 2.5rem;
+}
+
+.marquee-container {
+  display: flex;
+  flex: 3;
+  overflow: hidden;
+  user-select: none;
+  gap: var(--gap);
+}
+
+.marquee {
+  list-style: none inside;
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  justify-content: space-around;
+  flex-shrink: 0;
+  min-width: 100%;
+  gap: var(--gap);
+
+  li {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* animation direction  */
+.to-left {
+  animation: scroll-to-left 100s linear infinite;
+}
+.to-right {
+  animation: scroll-to-right 20s linear infinite;
+  transform: translateX(-100%);
+}
+
+.marquee-container:hover .to-right {
+  animation-play-state: paused;
+}
+
+@keyframes scroll-to-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes scroll-to-right {
+  from {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+  to {
+    transform: translateX(0);
+  }
+}

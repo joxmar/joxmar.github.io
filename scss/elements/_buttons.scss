@@ -6,142 +6,150 @@
 // shadow hover buttons
 // chevrons
 
-button, .btn, input[type=button]{
-	background: tint($light--gray, 40%);
-	cursor: pointer;
-	display: inline-block;
-	font-size:1em;
-	line-height:1.5;
-	margin-bottom: .5em;
-	padding: .375em 1em;
-	text-align:center;
-	text-decoration: none;
-	text-transform:uppercase;
-	transition:all 0.3s ease-in-out;
-	vertical-align: middle;
+button,
+.btn,
+input[type='button'] {
+  background: tint($light--gray, 40%);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1em;
+  line-height: 1.5;
+  margin-bottom: 0.5em;
+  padding: 0.375em 1em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+  vertical-align: middle;
 
-	&:hover{
-		background: shade($light--gray, 10%);
-	}
+  &:hover {
+    background: shade($light--gray, 10%);
+  }
 }
 
 // button sizes
-.btn--sm{
-	font-size:80%;
+.btn--sm {
+  font-size: 80%;
 }
-.btn--lg{
-	font-size:130%;
+.btn--lg {
+  font-size: 130%;
 }
-.btn--block{
-	display: block;
-	width: 100%;
+.btn--block {
+  display: block;
+  width: 100%;
 }
 
 // button colors
 .btn--success,
 .btn--alert,
-.btn--warning{
-	color:white;
+.btn--warning {
+  color: white;
 }
-.btn--success{
-	background:$color--success;
-	&:hover{
-		background: shade($color--success, 20%);		
-	}
+.btn--success {
+  background: $color--success;
+  &:hover {
+    background: shade($color--success, 20%);
+  }
 }
-.btn--alert{
-	background:$color--error;
-	&:hover{
-		background: shade($color--error, 20%);		
-	}
+.btn--alert {
+  background: $color--error;
+  &:hover {
+    background: shade($color--error, 20%);
+  }
 }
-.btn--warning{
-	background:$color--warning;
-	&:hover{
-		background: shade($color--warning, 20%);		
-	}
+.btn--warning {
+  background: $color--warning;
+  &:hover {
+    background: shade($color--warning, 20%);
+  }
 }
 
 // Ghost buttons
-.btn__ghost{
-	background:none;
-	border:1px solid $medium--gray;
+.btn__ghost {
+  background: none;
+  border: 1px solid $medium--gray;
 
-	&:hover{
-		background:$medium--gray;
-		color:white;
-	}
+  &:hover {
+    background: $medium--gray;
+    color: white;
+  }
 }
 
 //  Call to action
 .btn--cta {
-	background: $primary-color;
-	color: $dark--gray;
+  background: $primary-color;
+  color: $dark--gray;
   font-family: 'novecento_sans_widebook';
-	font-size: 1.615rem;
-	height: 100px;
-	letter-spacing: 0.2em;
+  font-size: 1.615rem;
+  height: 100px;
+  letter-spacing: 0.2em;
 
-	@include for-size(phone-only) {
-  	height: 70px;
+  @include for-size(phone-only) {
+    height: 70px;
   }
 }
 
 // chevrons
-.chevron{
-	@include border-radius(100%);
-	display: inline-block;
-	height: 4em;
-	width: 4em;
-	position:relative;
+.chevron {
+  @include border-radius(100%);
+  display: inline-block;
+  height: 4em;
+  width: 4em;
+  position: relative;
 
-	&:before{
-		content: ' ';
-		border:4px solid $light--gray;
-		border-top-style:none;
-		border-right-style:none;
-		display: block;		
-		height: 50%;
-		position: absolute;
-		top: 25%;
-		width: 50%;
-	}
+  &:before {
+    content: ' ';
+    border: 4px solid $light--gray;
+    border-top-style: none;
+    border-right-style: none;
+    display: block;
+    height: 50%;
+    position: absolute;
+    top: 25%;
+    width: 50%;
+  }
 
-	&--left{
-		&:before{
-			left: 35%;
-			transform: rotate(45deg);
-		}
-	}
+  &--left {
+    &:before {
+      left: 35%;
+      transform: rotate(45deg);
+    }
+  }
 
-	&--right{
-		&:before{
-			right: 35%;
-			transform: rotate(-135deg);
-		}
-	}
-	&--up{
-		&:before{
-			top: 35%;
-			transform: rotate(135deg);
-		}
-	}
+  &--right {
+    &:before {
+      right: 35%;
+      transform: rotate(-135deg);
+    }
+  }
+  &--up {
+    &:before {
+      top: 35%;
+      transform: rotate(135deg);
+    }
+  }
 
-	&--down{
-		&:before{
-			bottom: 30%;
-			top: 10%;
-			transform: rotate(-45deg);
-		}
-	}
+  &--down {
+    &:before {
+      bottom: 30%;
+      top: 10%;
+      transform: rotate(-45deg);
+    }
+  }
 
-	&--transparent, &--transparent:hover{
-		background: transparent;
-	}
+  &--transparent,
+  &--transparent:hover {
+    background: transparent;
+  }
 
-	&--sm{
-		height: 2em;
-		width: 2em;
-	}
+  &--sm {
+    height: 2em;
+    width: 2em;
+  }
+}
 
+.collab {
+  border: 0;
+  padding: 0;
+  margin: 0;
 }
