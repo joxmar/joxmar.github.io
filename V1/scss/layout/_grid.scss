@@ -1,0 +1,258 @@
+.container {
+	display: block;
+	padding: 0 2.5%;
+}
+
+.container-full{
+	margin: 0 auto;
+	position:relative;
+	padding: 0 2%;
+}
+
+// Sections BEM structure sample
+// section-scrolling
+//	- section-scrolling__title (--front, --back; modifier for putting on top or behind elements)
+// 		- section-scrolling__grid--2cols
+//		-- section-scrolling__tabs (--vertical, --horizontal)
+//		-- section-scrolling__tabs-content
+
+// Responsive styles breakpoints
+// I'm using a mixin break points and they will be placed inside each style block:
+// .style {
+// 	top: 0;
+
+// 	.child {
+// 		left: 20px;
+// 	}
+
+// 	@include for-size(tablet-landscape-up) {
+//     top: 100px;
+    
+//     .child {
+// 			left: 0;
+// 		}
+//   }
+// }
+
+/* GRID *********************************/
+
+.body {
+	display: grid;
+	grid-template-columns: 350px auto;
+
+	@include for-size(tablet-landscape-up) {
+		grid-template-columns: 1fr;
+  }
+
+}
+
+.grid {
+	display: grid;
+	grid-gap: 0;
+	height: 100%;
+
+	&__about {
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: repeat(3, 1fr);
+		grid-template-areas:
+		"intro intro contact"
+		"intro intro profile"
+		"about about profile";
+		
+
+		> div {
+			align-content: center;
+			align-items: center;
+			display: flex;
+			flex-flow: row wrap;
+		}
+	}
+
+	&__portfolio {
+		grid-template-columns: 1fr 2fr;
+	}
+
+	@include for-size(tablet-portrait-up) {
+		&__about {
+			grid-template-columns: repeat(2, 1fr);
+			grid-template-rows: repeat(5, 1fr);
+			grid-template-areas:
+			"intro intro"
+			"intro intro"
+			"about about"
+			"contact profile"
+			"contact profile";
+		}
+
+		&__portfolio {
+			grid-template-columns: 1fr;
+			grid-template-rows: 40% 60%;
+		}
+	}
+	
+	@include for-size(phone-only ) {
+		&__about {
+	    grid-template-rows: 45vh 30vh 25vh;
+    	grid-template-areas:
+        "intro intro"
+        "about about"
+        "contact profile";
+    }
+  }
+}
+
+/*  PORTFOLIO SECTION *********************************/
+.intro {
+	background-attachment: fixed;
+	background-image: url('../images/jorge-elvir-hero.jpg');
+	background-position: bottom right;
+	background-repeat: no-repeat;
+	background-size: cover;
+	grid-area: intro;
+	padding: 0 2em;
+
+	&__headline {
+		color: #ffffff;
+		line-height: 1.5;
+		width: 100%;
+
+		b {
+			color: $primary-color;
+		}
+	}
+}
+
+.about__contact {
+	background: $primary-color;
+	grid-area: contact;
+	justify-content: space-evenly;
+	padding: 4em 2em;
+
+	h3 {
+		text-transform: lowercase;
+	}
+}
+
+.about__jorge {
+	grid-area: about;
+	padding: 2em;
+
+}
+
+.about__profile-picture {
+	background-image: url(../images/about-jorge-elvir.jpg);
+	background-attachment: scroll;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	grid-area: profile;
+	overflow: hidden;
+}
+
+
+/*  PORTFOLIO SECTION *********************************/
+.grid__portfolio {}
+.portfolio__description {
+	position: relative;
+	padding: 10em 2em 0;
+	z-index: 1;
+
+	&.backType:before {
+		opacity: .07;
+    transform: translateY(-75%);
+    width: 175%;
+	}
+
+	h2 {
+		border-bottom: 5px solid $primary-color;
+		// margin-top: 6em;
+		margin-bottom: .75em;
+	}
+
+	.btn--cta {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		margin-bottom: 0;
+	}
+
+	@include for-size(tablet-portrait-up) {
+		padding-top: 7em;
+	}
+
+	@include for-size(phone-only) {
+		padding-top: 6em;
+	}
+}
+
+.portfolio__sample {
+	background: $light--gray;
+	height: auto;
+	overflow: hidden;
+	position: relative;
+}
+
+.portfolio__slide {
+	padding: 2em 2em 0;
+
+	@include for-size(tablet-portrait-up) {
+		.fp-tableCell {
+    	vertical-align: top;
+  	  padding-top: 30px;
+		}
+	}
+}
+
+.portfolio__image {
+	@include box-shadow(0, 3px, 6px);
+}
+
+.portfolio__slide--one {
+	text-align: center;
+
+	@include for-size(tablet-portrait-up) {
+
+		.portfolio__image {		
+			height: 100%;
+			margin: 0 auto;
+			width: auto;
+		}
+	}
+}
+
+.portfolio__slide--two {
+	.portfolio__image {
+		width: 90%;
+
+		&:last-child {
+			transform: translate(10%, -25%);			
+		}	
+	}
+
+	@include for-size(tablet-portrait-up) {
+		.portfolio__image {
+			&:last-child {
+				transform: translate(10%, -35%);
+			}	
+		}
+  }
+}
+
+
+// animate.css animation delays
+.zoomIn{
+	
+
+	&:nth-child(2) {
+		animation-delay: .9s;		
+	}
+
+	&:nth-child(3) {
+		animation-delay: .6s;		
+	}
+
+	&:last-child {
+		animation-delay: .3s;
+	}
+}
+

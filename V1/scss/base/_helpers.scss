@@ -1,0 +1,77 @@
+/* Helpers */
+// align text : left center right
+// text transform
+// floats
+// clearfix
+// visibility
+// block spacers
+
+// text align
+.align-left{
+	text-align:left;
+}
+.align-right{
+	text-align:right;
+}
+.align-center{
+	text-align:center;
+}
+
+// text transforms
+.txt-uppercase{
+	text-transform:uppercase;
+}
+.txt-lowecase{
+	text-transform: lowercase;
+}
+.txt-capitalize{
+	text-transform: capitalize;
+}
+
+// floats
+.float-left{
+	float:left;
+}
+.float-right{
+	float:right;
+}
+
+// clearfix
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+} 
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+}
+
+// visibility
+.show {
+  display: block !important;
+}
+.hidden {
+  display: none !important;
+}
+.invisible {
+  visibility: hidden;
+}
+
+// block spacers
+.spacer{
+	margin-bottom: 1em;
+}
+
+// background colors
+.background--error{
+	background:$color--error;
+}
+.background-success{
+	background:$color--success;
+}
+.background--warning{
+	background:$color--warning;
+}

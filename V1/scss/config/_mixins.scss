@@ -1,0 +1,122 @@
+// Build the following mixins
+// - border radius
+// - cards
+// - box shadow
+// - triangle
+// - opacity
+// - tint and shades
+// - gradients
+// - center element
+// - breakpoints
+
+// border radius
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+  background-clip: padding-box;  /* stops bg color from leaking outside the border: */
+}
+
+@mixin card-style() {
+  background:white;
+  @include box-shadow(0,0,34px, $light--gray);
+}
+
+// box shadow
+@mixin box-shadow($horizontal: 0px, $vertical: 1px, $blur: 2px, $color: #CCC) {
+  -webkit-box-shadow: $horizontal $vertical $blur $color;
+  -moz-box-shadow: $horizontal $vertical $blur $color;
+  box-shadow: $horizontal $vertical $blur $color;
+}
+
+/// Triangle helper mixin
+/// @param {Direction} $direction - Triangle direction, either `top`, `right`, `bottom` or `left`
+/// @param {Color} $color [currentcolor] - Triangle color 
+/// @param {Length} $size [1em] - Triangle size
+//  usage:
+// .foo::before {
+//   @include triangle(bottom);
+//   position: absolute;
+//   left: 50%;
+//   bottom: 100%;
+// }
+@mixin triangle($direction, $color: currentcolor, $size: 1em) {
+  @if not index(top right bottom left, $direction) {
+    @error "Direction must be either `top`, `right`, `bottom` or `left`.";
+  }
+
+  width: 0;
+  height: 0;
+  content: '';
+  z-index: 2;
+  border-#{opposite-position($direction)}: ($size * 1.5) solid $color;
+  
+  $perpendicular-borders: $size solid transparent;
+  
+  @if $direction == top or $direction == bottom {
+    border-left:   $perpendicular-borders;
+    border-right:  $perpendicular-borders;
+  } @else if $direction == right or $direction == left {
+    border-bottom: $perpendicular-borders;
+    border-top:    $perpendicular-borders;
+  }
+}
+
+
+// opacity
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+
+// tint & shade
+// usage:
+// color: tint(#BADA55, 42%)
+@function tint($color, $percentage){
+  @return mix(white, $color, $percentage);
+}
+
+@function shade($color, $percentage){
+  @return mix(black, $color, $percentage);
+}
+
+// linear gradient
+@mixin linearGradient($top, $bottom){
+  background: $top; /* Old browsers */
+  background: -moz-linear-gradient(top,  $top 0%, $bottom 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$top), color-stop(100%,$bottom)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  $top 0%,$bottom 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  $top 0%,$bottom 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  $top 0%,$bottom 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  $top 0%,$bottom 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+}
+
+//  Center Block
+@mixin center-block(){
+  display: block;
+  margin-left: auto;
+  margin-right:auto;
+}
+
+
+// Break points
+// Usage:
+// @include for-size(desktop-up) {
+//     padding: 20px;
+// }
+
+@mixin for-size($size) {
+  @if $size == phone-only {
+    @media only screen and (max-width: 500px) { @content; }
+  } @else if $size == tablet-portrait-up {
+    @media only screen and (max-width: 992px) { @content; } //600px
+  } @else if $size == tablet-landscape-up {
+    @media only screen and (max-width: 1200px) { @content; } // 900px
+  } @else if $size == desktop-up {
+    @media only screen and (max-width: 1400px) { @content; } // 1200px
+  } @else if $size == big-desktop-up {
+    @media only screen and (max-width: 112.5em) { @content; } // 1800px and up
+  }
+}

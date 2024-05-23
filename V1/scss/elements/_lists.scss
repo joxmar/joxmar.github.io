@@ -1,0 +1,58 @@
+/* Lists */
+// unordered
+// ordered
+// vertical
+// inline
+// unstyle
+// Definition list
+
+ul, ol {
+   margin: 0px 0px 10px 1em;
+   padding: 0px;
+   font-size: 1em;
+}
+li {
+   font-size: 1em;
+   line-height: 1.362em;
+   margin: 0px 0px 0.4em 0px;
+}
+
+// unstyled lists
+.list--unstyled, .list--inline{
+	list-style:none;
+	margin-left: 0;
+}
+
+// inline lists
+.list__item{
+	display: inline-block;
+	margin-right: 0.65em;
+}
+
+// definition Lists
+dl{}
+dl dt{
+	font-weight:bold;
+}
+dl dd{
+	margin: 0 0 0.5em;
+}
+
+// checkbox style lists
+.list--checked{
+	position:relative;
+	padding-left: 15px;
+
+	&:before {
+	border:2px solid $color--success;	
+	border-right-style: none;
+	border-top-style: none;		
+	content:'';
+	height: 5px;
+	left: 0;
+	position:absolute;
+	transform: rotate(-45deg);
+	top:7px;
+	width: 10px;
+	}
+}
