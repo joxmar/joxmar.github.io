@@ -36,17 +36,6 @@ function loader() {
       autoAlpha: 0,
       duration: 0.5,
       // delay: 1,
-    })
-    .from('.skills', {
-      autoAlpha: 0,
-      duration: 0.5,
-      delay: 1,
-    })
-    .add(() => {
-      const skillsMarquee = document.querySelectorAll('.skills-marquee');
-      skillsMarquee.forEach((marquee) => {
-        marquee.classList.add('to-left');
-      });
     });
 }
 // parallax
@@ -59,23 +48,23 @@ window.addEventListener('scroll', () => {
 });
 
 // add class .to-left to both skills-marquee when .skills enters the viewport
-// const skills = document.querySelector('.skills');
-// const skillsMarquee = document.querySelectorAll('.skills-marquee');
-// const skillsObserver = new IntersectionObserver(
-//   (entries, skillsObserver) => {
-//     entries.forEach((entry) => {
-//       if (!entry.isIntersecting) {
-//         return;
-//       } else {
-//         skillsMarquee.forEach((marquee) => {
-//           marquee.classList.add('to-left');
-//         });
-//         skillsObserver.unobserve(entry.target);
-//       }
-//     });
-//   },
-//   {
-//     threshold: 0.5,
-//   }
-// );
-// skillsObserver.observe(skills);
+const skills = document.querySelector('.skills');
+const skillsMarquee = document.querySelectorAll('.skills-marquee');
+const skillsObserver = new IntersectionObserver(
+  (entries, skillsObserver) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        return;
+      } else {
+        skillsMarquee.forEach((marquee) => {
+          marquee.classList.add('to-left');
+        });
+        skillsObserver.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.5,
+  }
+);
+skillsObserver.observe(skills);

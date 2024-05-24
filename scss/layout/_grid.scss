@@ -6,6 +6,12 @@ body {
   overflow-x: hidden;
 }
 
+#intro {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
 .container {
   max-width: calc(1300px + 2rem);
   margin-inline: auto;
