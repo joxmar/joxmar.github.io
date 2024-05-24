@@ -49,6 +49,14 @@ function loader() {
       });
     });
 }
+// parallax
+const parallax = document.querySelectorAll('.parallax');
+window.addEventListener('scroll', () => {
+  let val = window.scrollY;
+  parallax.forEach((bg) => {
+    bg.style.top = -val * 0.25 + 'px';
+  });
+});
 
 // add class .to-left to both skills-marquee when .skills enters the viewport
 // const skills = document.querySelector('.skills');
