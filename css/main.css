@@ -576,7 +576,7 @@ mark {
 }
 
 .animate-weight {
-  transition: font-variation-settings 0.5s;
+  transition: all 0.5s ease-in-out;
 }
 
 .to-thin:hover {
@@ -676,6 +676,7 @@ html {
 
 body {
   overflow-x: hidden;
+  transition: all 0.5s ease-in-out;
 }
 
 #intro {
@@ -1182,7 +1183,7 @@ dl dd {
   to {
     transform: translateX(0);
   }
-}/*# sourceMappingURL=main.css.map */ut[type=checkbox], input[type=radio] {
+}/*# sourceMappingURL=main.css.map */e=radio] {
   margin-right: 0.3em;
 }
 
