@@ -1,3 +1,15 @@
 .dark-mode {
-  background-color: $dark-bg;
+  background-color: $dark-color;
+}
+
+.dark-mode h1 {
+  color: white;
+}
+
+.dark-mode .skills {
+  background-color: #fcee4b;
+}
+
+.dark-mode .skills h2 {
+  background-color: white;
 }

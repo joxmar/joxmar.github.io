@@ -1,0 +1,28 @@
+.switch-bg {
+  min-height: 200px;
+  text-align: center;
+  position: absolute;
+  right: 0%;
+  z-index: 1000;
+}
+
+.switch-bg.lit {
+}
+
+#switchInp {
+  position: absolute;
+  left: -9999px;
+  visibility: hidden;
+}
+
+.pull-string {
+  display: inline-block;
+  text-align: center;
+  margin: -2px auto 0 auto;
+  cursor: pointer;
+}
+
+canvas {
+  border: none;
+  outline: none;
+}

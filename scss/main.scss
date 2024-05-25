@@ -5,6 +5,7 @@ Twitter: @joxmar
 // configuration
 @import 'config/variables';
 @import 'config/mixins';
+@import 'config/darkmode';
 
 // Base resets
 @import 'base/normalize';
@@ -26,3 +27,4 @@ Twitter: @joxmar
 
 // Components
 @import 'components/marquee';
+@import 'components/themeswitch';
