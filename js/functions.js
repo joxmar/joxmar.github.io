@@ -68,3 +68,14 @@ const skillsObserver = new IntersectionObserver(
   }
 );
 skillsObserver.observe(skills);
+
+// mouse grab effect
+let chain = document.querySelector('.pull-string');
+
+chain.addEventListener('mousedown', function () {
+  this.classList.add('grabbed');
+});
+
+chain.addEventListener('mouseup', function () {
+  this.classList.remove('grabbed');
+});

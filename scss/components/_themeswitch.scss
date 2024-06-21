@@ -19,7 +19,11 @@
   display: inline-block;
   text-align: center;
   margin: -2px auto 0 auto;
-  cursor: pointer;
+  cursor: grab;
+}
+
+.pull-string.grabbed {
+  cursor: grabbing;
 }
 
 canvas {
