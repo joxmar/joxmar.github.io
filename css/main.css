@@ -836,7 +836,18 @@ body {
   border-radius: 15px;
 }
 
+.qr-code {
+  text-align: center;
+  position: relative;
+}
+
+.qr-code img.qr {
+  position: absolute;
+  top: 0;
+}
+
 .vcard-details {
+  display: none;
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -845,7 +856,12 @@ body {
   transform: translateY(-60px);
 }
 
-.container-mini img {
+.vcard-details p,
+.vcard-details ul {
+  margin: 0;
+}
+
+.vcard-details img {
   border-radius: 50%;
   aspect-ratio: 1/1;
   -o-object-fit: cover;

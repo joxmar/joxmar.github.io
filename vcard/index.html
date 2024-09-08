@@ -36,8 +36,13 @@
 
 <body class="body body-vcard">
   <div class="container-mini">
+
     <div class="vcard-details">
-      <img src="../images/BW-portrait.jpg" alt="Jorge Elvir">
+      <div class="qr-code">
+        <!-- qr ode generted via adobe express (personal gmail account) -->
+        <img class="qr hidden" src="../images/Digital_vcard.jpg" alt="View and download vcard">
+        <img src="../images/BW-portrait.jpg" alt="Jorge Elvir">
+      </div>
       <div class="vcard-name-title">
         <h1 class="h2 fixel-light">Jorge Elvir</h1>
         <p class="">Web Developer</p>
@@ -51,5 +56,14 @@
   </div>
 
 </body>
+<script>
+  let qrContainer = document.querySelector('.qr-code');
+  let qrImg = document.querySelector('.qr');
+
+  qrContainer.addEventListener('click', function () {
+    qrImg.classList.toggle('hidden');
+  });
+
+</script>
 
 </html>
