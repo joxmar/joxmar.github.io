@@ -540,11 +540,13 @@ h1 {
   letter-spacing: -0.09rem;
 }
 
-h2 {
+h2,
+.h2 {
   font-size: clamp(1.3rem, 3vw, 2rem);
 }
 
-h3 {
+h3,
+.h3 {
   font-size: 1.22rem;
   line-height: 1.59em;
 }
@@ -578,6 +580,10 @@ mark {
   font-size: clamp(3rem, 20vw, 12rem);
   letter-spacing: -0.6rem;
   font-variation-settings: "wght" 700, "wdth" 100;
+}
+
+.fixel-light {
+  font-variation-settings: "wght" 500, "wdth" 100;
 }
 
 .footer-marquee {
@@ -813,6 +819,53 @@ body {
   visibility: hidden;
 }
 
+.body-vcard {
+  background-color: #11090b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 60px;
+}
+
+.container-mini {
+  margin-inline: auto;
+  max-width: 400px;
+  position: relative;
+  width: 80%;
+  background-color: white;
+  border-radius: 15px;
+}
+
+.vcard-details {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  transform: translateY(-60px);
+}
+
+.container-mini img {
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  -o-object-fit: cover;
+     object-fit: cover;
+  max-width: 50%;
+}
+
+.vcard-name-title {
+  text-align: center;
+}
+
+.vcard-contact {
+  list-style: none inside;
+  text-align: center;
+}
+
+.vcard-contact a {
+  color: #11090b;
+}
+
 header {
   padding: 1rem 0;
 }
@@ -933,7 +986,7 @@ input[type=button] {
   font-size: 1em;
   line-height: 1.5;
   margin-bottom: 0.5em;
-  padding: 0.375em 1em;
+  padding: 1em 1.375em;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
@@ -943,7 +996,8 @@ input[type=button] {
 button:hover,
 .btn:hover,
 input[type=button]:hover {
-  background: #dddddd;
+  background: #11090b;
+  color: #fcee4b;
 }
 
 .btn--sm {
@@ -997,16 +1051,8 @@ input[type=button]:hover {
 
 .btn--cta {
   background: #fcee4b;
-  color: #313131;
-  font-family: "novecento_sans_widebook";
-  font-size: 1.615rem;
-  height: 100px;
+  color: #11090b;
   letter-spacing: 0.2em;
-}
-@media only screen and (max-width: 500px) {
-  .btn--cta {
-    height: 70px;
-  }
 }
 
 .chevron {

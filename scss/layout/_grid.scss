@@ -141,3 +141,51 @@ body {
 .is-hidden {
   visibility: hidden;
 }
+
+// vcard
+.body-vcard {
+  background-color: $dark-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 60px;
+}
+
+.container-mini {
+  margin-inline: auto;
+  // margin-top: calc(6vh + 40px); // 40px from the -40px tranform on the vcard
+  max-width: 400px;
+  position: relative;
+  width: 80%;
+  background-color: white;
+  border-radius: 15px;
+}
+
+.vcard-details {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  transform: translateY(-60px);
+}
+
+.container-mini img {
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  max-width: 50%;
+}
+
+.vcard-name-title {
+  text-align: center;
+}
+
+.vcard-contact {
+  list-style: none inside;
+  text-align: center;
+}
+
+.vcard-contact a {
+  color: $dark-color;
+}

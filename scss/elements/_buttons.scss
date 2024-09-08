@@ -15,7 +15,7 @@ input[type='button'] {
   font-size: 1em;
   line-height: 1.5;
   margin-bottom: 0.5em;
-  padding: 0.375em 1em;
+  padding: 1em 1.375em;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
@@ -23,7 +23,8 @@ input[type='button'] {
   vertical-align: middle;
 
   &:hover {
-    background: shade($light--gray, 10%);
+    background: $dark-color;
+    color: $primary-color;
   }
 }
 
@@ -78,15 +79,9 @@ input[type='button'] {
 //  Call to action
 .btn--cta {
   background: $primary-color;
-  color: $dark--gray;
-  font-family: 'novecento_sans_widebook';
-  font-size: 1.615rem;
-  height: 100px;
+  color: $dark-color;
+  // font-size: 1.615rem;
   letter-spacing: 0.2em;
-
-  @include for-size(phone-only) {
-    height: 70px;
-  }
 }
 
 // chevrons
