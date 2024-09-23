@@ -3,7 +3,7 @@ Twitter: @joxmar
 */
 @import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=block");
 .dark-mode {
-  background-color: #11090b;
+  background-color: #101010;
 }
 
 .dark-mode h1 {
@@ -12,6 +12,7 @@ Twitter: @joxmar
 
 .dark-mode .skills {
   background-color: #fcee4b;
+  color: black;
 }
 
 .dark-mode .skills h2 {
@@ -506,19 +507,19 @@ html {
 }
 
 body {
-  color: #11090b;
+  color: #080808;
   font-family: "Fixel", sans-serif;
   font-variation-settings: "wght" 400, "wdth" 100;
   font-size: 1rem;
 }
 
 ::-moz-selection {
-  color: #11090b;
+  color: #080808;
   background-color: #fcee4b;
 }
 
 ::selection {
-  color: #11090b;
+  color: #080808;
   background-color: #fcee4b;
 }
 
@@ -591,6 +592,7 @@ mark {
 }
 .footer-marquee li {
   font-size: clamp(2.3rem, 4vw, 3rem);
+  line-height: 1;
 }
 
 .about-title {
@@ -689,7 +691,7 @@ mark {
 }
 
 .background--dark {
-  background: #11090b;
+  background: #080808;
 }
 
 html {
@@ -754,10 +756,16 @@ body {
 .skills {
   display: flex;
   align-items: baseline;
-  margin: 2rem 0 0;
+  margin: 2rem auto;
+  background: black;
+  color: white;
+  border-radius: 25px;
+  padding: 0;
 }
 .skills .marker {
   background-color: #fcee4b;
+  border-radius: 25px 0 0 25px;
+  color: black;
   padding: 1rem 2rem 0.5rem;
   display: inline-block;
 }
@@ -765,6 +773,7 @@ body {
 .about {
   padding: 3rem 0 8rem;
   color: white;
+  border-radius: 25px;
   position: relative;
   overflow: hidden;
   /* Small Devices, tablets portrait */
@@ -811,8 +820,17 @@ body {
   color: #fcee4b;
 }
 
+.footer {
+  padding: 0 0 2rem 0;
+  margin: 2rem auto;
+}
+
 .collab {
-  color: #11090b;
+  color: #080808;
+}
+
+.footer-marquee {
+  border-radius: 25px;
 }
 
 .is-hidden {
@@ -821,7 +839,7 @@ body {
 
 .body-vcard {
   background: #000000; /* fallback for old browsers */ /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #11090b, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to bottom, #080808, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -880,7 +898,7 @@ body {
 }
 
 .vcard-contact a {
-  color: #11090b;
+  color: #080808;
 }
 
 header {
@@ -895,7 +913,7 @@ header .nav ul {
 }
 header .nav ul a {
   text-decoration: none;
-  color: #11090b;
+  color: #080808;
   text-transform: uppercase;
 }
 
@@ -1013,7 +1031,7 @@ input[type=button] {
 button:hover,
 .btn:hover,
 input[type=button]:hover {
-  background: #11090b;
+  background: #080808;
   color: #fcee4b;
 }
 
@@ -1068,7 +1086,7 @@ input[type=button]:hover {
 
 .btn--cta {
   background: #fcee4b;
-  color: #11090b;
+  color: #080808;
   letter-spacing: 0.2em;
   border-radius: 7px;
   line-height: 1;

@@ -64,10 +64,16 @@ body {
 .skills {
   display: flex;
   align-items: baseline;
-  margin: 2rem 0 0;
+  margin: 2rem auto;
+  background: black;
+  color: white;
+  border-radius: 25px;
+  padding: 0;
 
   .marker {
     background-color: $primary-color;
+    border-radius: 25px 0 0 25px;
+    color: black;
     padding: 1rem 2rem 0.5rem;
     display: inline-block;
   }
@@ -77,6 +83,7 @@ body {
 .about {
   padding: 3rem 0 8rem;
   color: white;
+  border-radius: 25px;
   position: relative;
   overflow: hidden;
 
@@ -128,12 +135,18 @@ body {
   }
 }
 
+.footer {
+  padding: 0 0 2rem 0;
+  margin: 2rem auto;
+}
+
 // footer
 .collab {
   color: $dark-color;
 }
 
 .footer-marquee {
+  border-radius: 25px;
   @extend .background--primary;
 }
 
