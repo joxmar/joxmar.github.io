@@ -418,10 +418,9 @@ template {
 }
 
 /* base */
-html, body {
+html,
+body {
   display: block;
-  height: 100%;
-  width: 100%;
 }
 
 /* apply a natural box layout model to all elements, but allowing components to change */
@@ -429,7 +428,9 @@ html {
   box-sizing: border-box;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -481,7 +482,8 @@ hr {
   margin-bottom: 1.5em;
 }
 
-a, button {
+a,
+button {
   transition: all 0.3s ease-in-out;
 }
 
@@ -699,7 +701,6 @@ html {
 }
 
 body {
-  overflow-x: hidden;
   transition: all 0.5s ease-in-out;
 }
 
@@ -915,6 +916,35 @@ header .nav ul a {
   text-decoration: none;
   color: #080808;
   text-transform: uppercase;
+}
+
+body {
+  cursor: none;
+}
+
+.circle {
+  background: transparent;
+  border: 2px solid #807ca4;
+  border-radius: 50%;
+  width: 2rem;
+  display: block;
+  height: 2rem;
+  position: fixed;
+  transition: opacity 0.4s ease-in-out;
+  z-index: 99999;
+  pointer-events: none;
+}
+
+.inner-circle {
+  background: #807ca4;
+  border-radius: 50%;
+  display: block;
+  width: 0.5rem;
+  height: 0.5rem;
+  position: fixed;
+  transition: transform 0.4s, background 0.4s;
+  z-index: 99999;
+  pointer-events: none;
 }
 
 /* Forms */

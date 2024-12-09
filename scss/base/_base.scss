@@ -1,15 +1,16 @@
 /* base */
-html,body{
-	display: block;
-	height: 100%;
-	width: 100%;	
+html,
+body {
+  display: block;
 }
 
 /* apply a natural box layout model to all elements, but allowing components to change */
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -58,12 +59,13 @@ video {
 }
 
 // hr divider
-hr{
-  @include opacity(.5);
+hr {
+  @include opacity(0.5);
   margin-bottom: 1.5em;
 }
 
 // Add transition to links and buttons
-a, button {
+a,
+button {
   transition: all 0.3s ease-in-out;
 }

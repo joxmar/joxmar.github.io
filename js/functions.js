@@ -2,6 +2,39 @@
 window.addEventListener('load', loader);
 
 function loader() {
+  // mouse follow
+  const circle = document.getElementById('circle');
+  const innerCircle = document.getElementById('innerCircle');
+
+  document.addEventListener('mousemove', (e) => {
+    // Get the circle current dimensions
+    const height = circle.offsetHeight;
+    const width = circle.offsetWidth;
+    const innerHeight = innerCircle.offsetHeight;
+    const innerWidth = innerCircle.offsetWidth;
+
+    // Inner circle follows the position of the mouse
+    innerCircle.style.left = `${e.clientX - innerWidth / 2}px`;
+    innerCircle.style.top = `${e.clientY - innerHeight / 2}px`;
+
+    setTimeout(() => {
+      // circle follows the position of the mouse like the smaller one. Play around with the time to find the proper trail
+      circle.style.left = `${e.clientX - width / 2}px`;
+      circle.style.top = `${e.clientY - height / 2}px`;
+    }, 100);
+
+    // Add class to inner circle when mouse is over a link or button
+    const link = e.target.closest('a');
+    const button = e.target.closest('button');
+    const lightSwitch = e.target.closest('label');
+
+    if (link || button || lightSwitch) {
+      circle.classList.add('is-hidden');
+    } else {
+      circle.classList.remove('is-hidden');
+    }
+  });
+
   // Years of experience
   const years = document.getElementById('yr-exp');
   const start = 2009; // i know it was OCt 2008 but I want to use the word "over" in the intro text, it is just 2 months.
@@ -15,28 +48,17 @@ function loader() {
     },
   });
 
-  TLLOAD.from('.ring', {
-    left: '-200%',
+  TLLOAD.from('.hero-img', {
+    y: '100',
     autoAlpha: 0,
-    duration: 3,
-  })
-    .from('.hero-img', {
-      y: '100',
-      autoAlpha: 0,
-      duration: 1,
-    })
-    .from('.intro-text', {
-      webkitFilter: 'blur(15px)',
-      y: '-10',
-      autoAlpha: 0,
-      duration: 1,
-      // delay: 1,
-    })
-    .from('.nav', {
-      autoAlpha: 0,
-      duration: 0.5,
-      // delay: 1,
-    });
+    duration: 1,
+  }).from('.intro-text', {
+    webkitFilter: 'blur(15px)',
+    y: '-10',
+    autoAlpha: 0,
+    duration: 1,
+    // delay: 1,
+  });
 }
 // parallax
 const parallax = document.querySelectorAll('.parallax');
