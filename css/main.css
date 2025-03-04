@@ -702,6 +702,7 @@ html {
 
 body {
   transition: all 0.5s ease-in-out;
+  background-color: white;
 }
 
 #intro {
@@ -926,7 +927,7 @@ body {
 
 .circle {
   background: transparent;
-  border: 2px solid #807ca4;
+  border: 2px solid white;
   border-radius: 50%;
   width: 2rem;
   display: block;
@@ -935,10 +936,11 @@ body {
   transition: opacity 0.4s ease-in-out;
   z-index: 99999;
   pointer-events: none;
+  mix-blend-mode: exclusion;
 }
 
 .inner-circle {
-  background: #807ca4;
+  background: white;
   border-radius: 50%;
   display: block;
   width: 0.5rem;
