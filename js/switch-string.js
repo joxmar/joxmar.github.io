@@ -57,7 +57,7 @@ class Bead {
     // add img at the end of the beads
     ctx.drawImage(
       img,
-      beads[BEAD_COUNT - 1].x - 8,
+      beads[BEAD_COUNT - 1].x - 6,
       beads[BEAD_COUNT - 1].y + 2,
       20,
       20
