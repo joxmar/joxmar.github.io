@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "esbuild": "^0.25.4",
+    "gsap": "^3.13.0"
+  },
+  "scripts": {
+    "build:js": "esbuild src/js/functions.js --bundle --outfile=docs/js/functions.js --minify --watch --sourcemap",
+    "dev": "npm run build:js"
+  }
+}

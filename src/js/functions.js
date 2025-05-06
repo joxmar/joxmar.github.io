@@ -1,1 +1,64 @@
-$(document).ready(function(){function s(){e($(".intro__headline.letters").find("b")),n($(".intro__headline"))}function e(s){s.each(function(){var s=$(this),e=s.text().split(""),n=s.hasClass("is-visible");for(i in e)s.parents(".rotate-2").length>0&&(e[i]="<em>"+e[i]+"</em>"),e[i]=n?'<i class="in">'+e[i]+"</i>":"<i>"+e[i]+"</i>";var a=e.join("");s.html(a).css("opacity",1)})}function n(i){var s=c;i.each(function(){var i=$(this);if(i.hasClass("loading-bar"))s=h,setTimeout(function(){i.find(".cd-words-wrapper").addClass("is-loading")},u);else if(i.hasClass("clip")){var e=i.find(".cd-words-wrapper"),n=e.width()+10;e.css("width",n)}else if(!i.hasClass("type")){var t=i.find(".cd-words-wrapper b"),r=0;t.each(function(){var i=$(this).width();i>r&&(r=i)}),i.find(".cd-words-wrapper").css("width",r)}setTimeout(function(){a(i.find(".is-visible").eq(0))},s)})}function a(i){var s=o(i);if(i.parents(".intro__headline").hasClass("type")){var e=i.parent(".cd-words-wrapper");e.addClass("selected").removeClass("waiting"),setTimeout(function(){e.removeClass("selected"),i.removeClass("is-visible").addClass("is-hidden").children("i").removeClass("in").addClass("out")},C),setTimeout(function(){t(s,f)},m)}else if(i.parents(".intro__headline").hasClass("letters")){var n=i.children("i").length>=s.children("i").length?!0:!1;r(i.find("i").eq(0),i,n,p),d(s.find("i").eq(0),s,n,p)}else i.parents(".intro__headline").hasClass("clip")?i.parents(".cd-words-wrapper").animate({width:"2px"},v,function(){l(i,s),t(s)}):i.parents(".intro__headline").hasClass("loading-bar")?(i.parents(".cd-words-wrapper").removeClass("is-loading"),l(i,s),setTimeout(function(){a(s)},h),setTimeout(function(){i.parents(".cd-words-wrapper").addClass("is-loading")},u)):(l(i,s),setTimeout(function(){a(s)},c))}function t(i,s){i.parents(".intro__headline").hasClass("type")?(d(i.find("i").eq(0),i,!1,s),i.addClass("is-visible").removeClass("is-hidden")):i.parents(".intro__headline").hasClass("clip")&&i.parents(".cd-words-wrapper").animate({width:i.width()+10},v,function(){setTimeout(function(){a(i)},w)})}function r(i,s,e,n){if(i.removeClass("in").addClass("out"),i.is(":last-child")?e&&setTimeout(function(){a(o(s))},c):setTimeout(function(){r(i.next(),s,e,n)},n),i.is(":last-child")&&$("html").hasClass("no-csstransitions")){var t=o(s);l(s,t)}}function d(i,s,e,n){i.addClass("in").removeClass("out"),i.is(":last-child")?(s.parents(".intro__headline").hasClass("type")&&setTimeout(function(){s.parents(".cd-words-wrapper").addClass("waiting")},200),e||setTimeout(function(){a(s)},c)):setTimeout(function(){d(i.next(),s,e,n)},n)}function o(i){return i.is(":last-child")?i.parent().children().eq(0):i.next()}function l(i,s){i.removeClass("is-visible").addClass("is-hidden"),s.removeClass("is-hidden").addClass("is-visible")}$("#full-page").fullpage({sectionSelector:".section-scrolling",navigation:!0,keyboardScrolling:!0,easingcss3:"ease-in-out"});var c=2500,h=3800,u=h-3e3,p=50,f=150,C=500,m=C+800,v=600,w=1500;s()});
+import initAnimations from './animations.js';
+import initMouseTrail from './mouse-trail.js';
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize animations
+  initAnimations();
+
+  // Initialize the mouse trail
+  initMouseTrail();
+
+  // Initialize the loader function
+  loader();
+});
+
+
+function loader() {
+  // Years of experience
+  const years = document.getElementById('yr-exp');
+  const start = 2009; // i know it was OCt 2008 but I want to use the word "over" in the intro text, it is just 2 months.
+  const current = new Date().getFullYear();
+  years.textContent = current - start;  
+}
+
+// parallax
+const parallax = document.querySelectorAll('.parallax');
+window.addEventListener('scroll', () => {
+  let val = window.scrollY;
+  parallax.forEach((bg) => {
+    bg.style.top = -val * 0.25 + 'px';
+  });
+});
+
+// add class .to-left to both skills-marquee when .skills enters the viewport
+const skills = document.querySelector('.skills');
+const skillsMarquee = document.querySelectorAll('.skills-marquee');
+const skillsObserver = new IntersectionObserver(
+  (entries, skillsObserver) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        return;
+      } else {
+        skillsMarquee.forEach((marquee) => {
+          marquee.classList.add('to-left');
+        });
+        skillsObserver.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.5,
+  }
+);
+skillsObserver.observe(skills);
+
+// mouse grab effect
+let chain = document.querySelector('.pull-string');
+
+chain.addEventListener('mousedown', function () {
+  this.classList.add('grabbed');
+});
+
+chain.addEventListener('mouseup', function () {
+  this.classList.remove('grabbed');
+});
