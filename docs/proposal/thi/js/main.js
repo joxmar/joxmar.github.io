@@ -8,17 +8,21 @@ function initApp(){
     keyboard: {
       enabled: true,
     },    
+
+    // mousewheel
+    mousewheel: true,
   
     // // If we need pagination
     pagination: {
       el: '.swiper-pagination',
+      type: "progressbar",
     },
   
     // // Navigation arrows
-    // navigation: {
-    //   nextEl: '.swiper-button-next',
-    //   prevEl: '.swiper-button-prev',
-    // },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
   
     // // And if we need scrollbar
     // scrollbar: {

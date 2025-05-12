@@ -8,7 +8,34 @@
   <title>Project Proposal</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <style>
+    .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+      background: #fcee4b;
+    }
 
+    .swiper-button-next,
+    .swiper-button-prev {
+      background-color: black;
+      padding: 1.5rem;
+      font-size: 18px;
+      color: #fcee4b;
+      top: 90vh;
+    }
+
+    .swiper-button-next {
+      right: 3rem;
+    }
+
+    .swiper-button-prev {
+      left: unset;
+      right: 7rem;
+    }
+
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+      font-size: 24px;
+    }
+  </style>
 </head>
 
 <body class="min-h-screen bg-black p-4">
@@ -432,6 +459,10 @@
       </section>
     </div>
     <div class="swiper-pagination"></div>
+    <div class="arrow-nav">
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
