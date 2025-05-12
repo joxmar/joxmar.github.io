@@ -35,10 +35,37 @@
     .swiper-button-prev:after {
       font-size: 24px;
     }
+
+    #mobile {
+      padding: 3rem;
+      display: none !important;
+    }
+
+    /*********************************
+    Media Queries Desktop first
+    ********************************/
+    /* Medium Devices, ipad landscape */
+    @media only screen and (max-width : 1023px) {
+      main.swiper {
+        display: none !important;
+      }
+
+      #mobile {
+        display: flex !important;
+        min-height: 80vh !important;
+      }
+
+    }
   </style>
 </head>
 
 <body class="min-h-screen bg-black p-4">
+  <section id="mobile" class="bg-brand-1 justify-between">
+    <h2>This proposal is best viewed on desktop.</h2>
+    <p class="3xl">For any questions contact Martin at <br> <a
+        href="mailto:contact@jelvir.com">contact@jelvir.com</a><br><a href="tel:7133824475">713.382.4475</a></p>
+  </section>
+
   <main class="swiper">
     <div class="swiper-wrapper">
       <!-- Intro -->
@@ -362,7 +389,7 @@
           few important details and expectations:
         </p>
         <div class="grid grid-cols-3 mt-5">
-          <div class="px-5 border-r border-gray-200">
+          <div class="px-5">
             <p class="font-bold">🔐 Client Responsibilities</p>
             To begin and progress the work efficiently, the client agrees to provide:
             <ul class="list-disc">
@@ -375,7 +402,7 @@
                 delays to the project timeline.</li>
             </ul>
           </div>
-          <div class="px-5 border-r border-gray-200">
+          <div class="px-5">
             <p class="font-bold">🎨 Design Approval & Edits</p>
             You will receive two homepage design concepts.
             Once a direction is selected, you’ll receive one round of revisions to refine it.
