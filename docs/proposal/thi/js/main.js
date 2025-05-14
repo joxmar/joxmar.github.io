@@ -1,4 +1,4 @@
-function initApp() {
+function initApp(){
   let swiper = null;
   
   // Function to check if device is desktop
@@ -52,6 +52,20 @@ function initApp() {
   
   // Listen for window resize events
   window.addEventListener('resize', handleViewportChange);
-}
+  
 
+  const accordionBtn = document.querySelectorAll('.accordion-btn');
+  accordionBtn.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      // remove .active from all .accordion-bullets
+      const accordionBullets = document.querySelectorAll('.accordion-bullets');
+      accordionBullets.forEach((bullet) => {
+        bullet.classList.remove('active');
+      });
+
+      const accordionParent = btn.parentNode;
+      accordionParent.classList.toggle('active');      
+    });
+  })
+}
 document.addEventListener('DOMContentLoaded', initApp);

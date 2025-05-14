@@ -8,64 +8,10 @@
   <title>Project Proposal</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <style>
-    .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
-      background: #fcee4b;
-    }
 
-    .swiper-button-next,
-    .swiper-button-prev {
-      background-color: black;
-      padding: 1.5rem;
-      font-size: 18px;
-      color: #fcee4b;
-      top: 90vh;
-    }
-
-    .swiper-button-next {
-      right: 3rem;
-    }
-
-    .swiper-button-prev {
-      left: unset;
-      right: 7rem;
-    }
-
-    .swiper-button-next:after,
-    .swiper-button-prev:after {
-      font-size: 24px;
-    }
-
-    #mobile {
-      padding: 3rem;
-      display: none !important;
-    }
-
-    /*********************************
-    Media Queries Desktop first
-    ********************************/
-    /* Medium Devices, ipad landscape */
-    @media only screen and (max-width : 1023px) {
-      main.swiper {
-        display: none !important;
-      }
-
-      #mobile {
-        display: flex !important;
-        min-height: 80vh !important;
-      }
-
-    }
-  </style>
 </head>
 
 <body class="min-h-screen bg-black p-4">
-  <section id="mobile" class="bg-brand-1 justify-between">
-    <h2>This proposal is best viewed on desktop.</h2>
-    <p class="3xl">For any questions contact Martin at <br> <a
-        href="mailto:contact@jelvir.com">contact@jelvir.com</a><br><a href="tel:7133824475">713.382.4475</a></p>
-  </section>
-
   <main class="swiper">
     <div class="swiper-wrapper">
       <!-- Intro -->
@@ -80,7 +26,7 @@
       <!-- welcome -->
       <section id="welcome" class="swiper-slide bg-white justify-center gap-10">
         <h2 class="h1">
-          🌟Welcome
+          Welcome
         </h2>
         <p class="text-3xl">Thank you for the opportunity to work together on your organization's website overhaul. I’m
           excited about the
@@ -96,8 +42,15 @@
       <!-- Milestones Timeline -->
       <section id="milestone" class="swiper-slide bg-brand-1 justify-center">
         <div>
-          <h2 class="h2 w-2/3">
-            ✏️ Project Milestones
+          <h2 class="h2 w-2/3 flex items-center gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 48 48"
+              id="Timeline--Streamline-Outlined-Material" height="60" width="60">
+              <desc>Timeline Streamline Icon: https://streamlinehq.com</desc>
+              <path fill="#000000"
+                d="M5.4955 36c-0.96367 0 -1.78717 -0.3432 -2.4705 -1.0295C2.34167 34.2842 2 33.4592 2 32.4955s0.3415 -1.7872 1.0245 -2.4705C3.70783 29.3417 4.52917 29 5.4885 29c0.17433 0 0.34483 0.0083 0.5115 0.025 0.16667 0.0167 0.38333 0.0583 0.65 0.125l10 -10c-0.0667 -0.2667 -0.1083 -0.4833 -0.125 -0.65 -0.0167 -0.1667 -0.025 -0.3372 -0.025 -0.5115 0 -0.9593 0.3432 -1.7807 1.0295 -2.464 0.6863 -0.683 1.5113 -1.0245 2.475 -1.0245s1.7872 0.3438 2.4705 1.0315c0.6833 0.688 1.025 1.5148 1.025 2.4805 0 0.0587 -0.05 0.438 -0.15 1.138l5.5 5.5c0.2667 -0.0667 0.4833 -0.1083 0.65 -0.125 0.1667 -0.0167 0.3333 -0.025 0.5 -0.025 0.1667 0 0.3333 0.0083 0.5 0.025 0.1667 0.0167 0.3833 0.0583 0.65 0.125l8 -8c-0.0667 -0.2667 -0.1083 -0.4833 -0.125 -0.65 -0.0167 -0.1667 -0.025 -0.3372 -0.025 -0.5115 0 -0.9593 0.3432 -1.7807 1.0295 -2.464 0.6863 -0.683 1.5113 -1.0245 2.475 -1.0245s1.7872 0.3432 2.4705 1.0295c0.6833 0.6863 1.025 1.5113 1.025 2.475s-0.3415 1.7872 -1.0245 2.4705c-0.6833 0.6833 -1.5047 1.025 -2.464 1.025 -0.1743 0 -0.3448 -0.0083 -0.5115 -0.025 -0.1667 -0.0167 -0.3833 -0.0583 -0.65 -0.125l-8 8c0.0667 0.2667 0.1083 0.4833 0.125 0.65 0.0167 0.1667 0.025 0.3372 0.025 0.5115 0 0.9593 -0.3432 1.7807 -1.0295 2.464 -0.6863 0.683 -1.5113 1.0245 -2.475 1.0245s-1.7872 -0.3415 -2.4705 -1.0245c-0.6833 -0.6833 -1.025 -1.5047 -1.025 -2.464 0 -0.1743 0.0083 -0.3448 0.025 -0.5115 0.0167 -0.1667 0.0583 -0.3833 0.125 -0.65l-5.5 -5.5c-0.2667 0.0667 -0.4833 0.1083 -0.65 0.125 -0.1667 0.0167 -0.3375 0.025 -0.5125 0.025 -0.0583 0 -0.4375 -0.05 -1.1375 -0.15l-10 10c0.06667 0.2667 0.10833 0.4833 0.125 0.65 0.01667 0.1667 0.025 0.3372 0.025 0.5115 0 0.9593 -0.34317 1.7807 -1.0295 2.464C7.28417 35.6585 6.45917 36 5.4955 36Z"
+                stroke-width="1"></path>
+            </svg>
+            Project Milestones
           </h2>
           <p class="text-3xl">The project is divided into four key milestones</p>
         </div>
@@ -130,16 +83,22 @@
               be
               created for the homepage, blog, and key components to map out user experience before design begins.</p>
           </div>
-          <div class="w-1/2">
-            <h3>🔍 Content Strategy & Information Architecture <br><span class="variation">~20 hours</span></h3>
-            <ul class="list-disc list-inside mt-1 mb-10">
+          <div class="w-1/2 pl-6">
+            <h3 class="flex items-start gap-3">
+              <img src="img/sitemap.svg" class="w-6 h-auto -ml-6" alt="">
+              Content Strategy & Information Architecture ~20 hours
+            </h3>
+            <ul class="list-disc list-outside pl-6 mt-1 mb-10">
               <li>Full audit of ~20 pages of content</li>
               <li>Navigation/sitemap restructuring</li>
               <li>Recommendations for content trimming, merging, and rewriting</li>
               <li>SEO-friendly approach built into structure</li>
             </ul>
-            <h3>🧱 2. Wireframes (UX Design) <span class="variation">~18 hours</span></h3>
-            <ul class="list-disc list-inside mt-1">
+            <h3 class="flex items-start gap-3">
+              <img src="img/layout.svg" class="w-6 h-auto -ml-6" alt="">
+              2. Wireframes (UX Design) ~18 hours
+            </h3>
+            <ul class="list-disc list-outside pl-6 mt-1">
               <li>Homepage wireframe</li>
               <li>Key layout patterns for reusable blocks</li>
               <li>Wireframes for course registration user flow</li>
@@ -161,9 +120,12 @@
               page,
               blog post, and create visuals for all reusable block components.</p>
           </div>
-          <div class="w-1/2">
-            <h3>🎨 Visual Design <span class="variation">~32 hours</span></h3>
-            <ul class="list-disc list-inside mt-1 mb-10">
+          <div class="w-1/2 pl-6">
+            <h3 class="flex items-start gap-3">
+              <img src="img/design.svg" class="w-6 h-auto -ml-6" alt="">
+              Visual Design ~32 hours
+            </h3>
+            <ul class="list-disc list-outside pl-6 mt-1 mb-10">
               <li>2 homepage design concepts</li>
               <li>Final design refinement based on selected concept</li>
               <li>Style tiles or component library</li>
@@ -176,7 +138,7 @@
 
 
 
-      <!-- Developmen-->
+      <!-- Development-->
       <section id="development" class="swiper-slide bg-white justify-center">
         <div class="flex gap-10">
           <div class="w-1/2 flex flex-col justify-center">
@@ -194,16 +156,28 @@
           </div>
           <div class="w-1/2">
             <div class="grid grid-cols-1">
-              <div class="gap-10">
-                <h3 class="block">⚙️ 1. Server & Tech Setup ~8 hours</h3>
-                <ul class="list-disc list-inside mt-1 mb-5 flex flex-wrap gap-x-5">
+              <div class="gap-10 pl-6 accordion-bullets">
+                <button class="accordion-btn block cursor-pointer">
+                  <h3 class="flex items-start gap-3 justify-start">
+                    <img src="img/server.svg" class="w-6 h-auto -ml-6" alt="">
+                    1. Server & Tech Setup ~8 hours
+                    <img src="img/chevron.svg" class="w-6 h-auto" alt="">
+                  </h3>
+                </button>
+                <ul class="list-disc list-outside pl-6 mt-1 mb-5 flex flex-col gap-x-5">
                   <li>WordPress, WooCommerce, ACF, plugin setup</li>
                   <li>Hosting/server prep and deployment-ready install</li>
                 </ul>
               </div>
-              <div class="gap-10">
-                <h3 class="block">🧩 2. Theme & Block Development ~78 hours</h3>
-                <ul class="list-disc list-inside mt-1 mb-5 flex flex-wrap gap-x-5">
+              <div class="gap-10 pl-6 accordion-bullets">
+                <button class="accordion-btn block cursor-pointer">
+                  <h3 class="flex items-start gap-3 justify-start">
+                    <img src="img/development.svg" class="w-6 h-auto -ml-6" alt="">
+                    2. Theme Development ~78 hours
+                    <img src="img/chevron.svg" class="w-6 h-auto" alt="">
+                  </h3>
+                </button>
+                <ul class="list-disc list-outside pl-6 mt-1 mb-5 flex flex-col gap-x-5">
                   <li>Custom theme from scratch</li>
                   <li>15 custom Gutenberg blocks</li>
                   <li>Template development for homepage, blog, product</li>
@@ -211,24 +185,42 @@
                   <li>Theme backend cleanup (customizer, ACF fields, etc.)</li>
                 </ul>
               </div>
-              <div class="gap-10">
-                <h3 class="block">🏗️ Page Assembly ~22 hours</h3>
-                <ul class="list-disc list-inside mt-1 mb-5 flex flex-wrap gap-x-5">
+              <div class="gap-10 pl-6 accordion-bullets">
+                <button class="accordion-btn block cursor-pointer">
+                  <h3 class="flex items-start gap-3 justify-start">
+                    <img src="img/page-assembly.svg" class="w-6 h-auto -ml-6" alt="">
+                    Page Assembly ~22 hours
+                    <img src="img/chevron.svg" class="w-6 h-auto" alt="">
+                  </h3>
+                </button>
+                <ul class="list-disc list-outside pl-6 mt-1 mb-5 flex flex-col gap-x-5">
                   <li>Assemble homepage and key pages using reusable blocks</li>
                   <li>Populate 10–12 inner pages based on existing content</li>
                 </ul>
               </div>
-              <div class="gap-10">
-                <h3 class="block">🛍️ 4. Registration Setup ~12 hours</h3>
-                <ul class="list-disc list-inside mt-1 mb-5 flex flex-wrap gap-x-5">
+              <div class="gap-10 pl-6 accordion-bullets">
+                <button class="accordion-btn block cursor-pointer">
+                  <h3 class="flex items-start gap-3 justify-start">
+                    <img src="img/registration-setup.svg" class="w-6 h-auto -ml-6" alt="">
+                    4. Registration Setup ~12 hours
+                    <img src="img/chevron.svg" class="w-6 h-auto" alt="">
+                  </h3>
+                </button>
+                <ul class="list-disc list-outside pl-6 mt-1 mb-5 flex flex-col gap-x-5">
                   <li>Configure registration form</li>
                   <li>Customize form flow</li>
                   <li>Stripe setup and testing</li>
                 </ul>
               </div>
-              <div class="gap-10">
-                <h3 class="block">🔌 5. Integrations ~10 hours</h3>
-                <ul class="list-disc list-inside mt-1 flex flex-wrap gap-x-5">
+              <div class="gap-10 pl-6 accordion-bullets">
+                <button class="accordion-btn block cursor-pointer">
+                  <h3 class="flex items-start gap-3 justify-start">
+                    <img src="img/API.svg" class="w-6 h-auto -ml-6" alt="">
+                    5. Integrations ~10 hours
+                    <img src="img/chevron.svg" class="w-6 h-auto" alt="">
+                  </h3>
+                </button>
+                <ul class="list-disc list-outside pl-6 mt-1 flex flex-wrap gap-x-5">
                   <li>Constant Contact setup</li>
                   <li>Gravity Forms for online registration</li>
                   <li>Optional CRM, Zoom, etc. (TBD)</li>
@@ -252,31 +244,37 @@
               site
               monitoring and staff training.</p>
           </div>
-          <div class="w-1/2 flex flex-col justify-center">
-            <div>
-              <h3>🧪 1. Testing + QA ~10 hours</h3>
-              <ul class="list-disc list-inside mt-1 mb-10">
-                <li>Cross-browser and responsive testing</li>
-                <li>Accessibility spot checks</li>
-                <li>End-to-end transaction tests</li>
-              </ul>
-            </div>
-            <div>
-              <h3>🚀 2. Launch ~6 hours</h3>
-              <ul class="list-disc list-inside mt-1 mb-10">
-                <li>DNS, domain config, and go-live prep</li>
-                <li>Final polish and QA</li>
-              </ul>
-            </div>
-            <div>
-              <h3>🧰 3. Post-Launch Support ~4 hours</h3>
-              <ul class="list-disc list-inside mt-1 mb-10">
-                <li>1–2 training sessions with client team</li>
-                <li>3-Month Warranty: Covers theme/integration issues, monthly server updates, and routine testing.
-                  Content
-                  edits or additions not included.</li>
-              </ul>
-            </div>
+          <div class="w-1/2 flex flex-col justify-center pl-6">
+            <h3 class="flex items-start gap-3">
+              <img src="img/test.svg" class="w-6 h-auto -ml-6" alt="">
+              1. Testing + QA ~10 hours
+            </h3>
+            <ul class="list-disc list-outside pl-6 mt-1 mb-10">
+              <li>Cross-browser and responsive testing</li>
+              <li>Accessibility spot checks</li>
+              <li>End-to-end transaction tests</li>
+            </ul>
+
+            <h3 class="flex items-start gap-3">
+              <img src="img/launch.svg" class="w-6 h-auto -ml-6" alt="">
+              2. Launch ~6 hours
+            </h3>
+            <ul class="list-disc list-outside pl-6 mt-1 mb-10">
+              <li>DNS, domain config, and go-live prep</li>
+              <li>Final polish and QA</li>
+            </ul>
+
+            <h3 class="flex items-start gap-3">
+              <img src="img/post-launch.svg" class="w-6 h-auto -ml-6" alt="">
+              3. Post-Launch Support ~4 hours
+            </h3>
+            <ul class="list-disc list-outside pl-6 mt-1 mb-10">
+              <li>1–2 training sessions with client team</li>
+              <li>3-Month Warranty: Covers theme/integration issues, monthly server updates, and routine testing.
+                Content
+                edits or additions not included.</li>
+            </ul>
+
           </div>
         </div>
       </section>
@@ -285,9 +283,9 @@
       <!-- Project Estimate costs -->
       <section id="estimates" class="swiper-slide bg-white !grid grid-cols-2 !p-0 !gap-0">
 
-        <div class="p-20 h-full flex flex-col justify-center">
-          <h2>
-            ⌚️ Project Estimate
+        <div class="py-20 px-14 h-full flex flex-col justify-center">
+          <h2 class="flex items-center gap-3">
+            <img src="img/estimate.svg" class="w-10 h-auto" alt="">Project Estimate
           </h2>
           <ol class="mt-20 text-2xl list-decimal list-inside">
             <li><b>Strategy:</b> 38 hours</li>
@@ -319,7 +317,9 @@
 
       <!-- Retainer -->
       <section id="retainer" class="swiper-slide bg-white justify-center text-center">
-        <h2>🔧 Monthly support & maintenance</h2>
+        <h2 class="flex items-center gap-3 justify-center">
+          <img src="img/maintenance.svg" class="w-10 h-auto" alt=""> Monthly support & maintenance
+        </h2>
         <p class="text-xl mt-3">(Optional) ongoing WordPress support to keep your website secure, stable, and evolving
           with your
           needs.
@@ -334,7 +334,7 @@
               occasional
               tweaks.
             </p>
-            <ul class="mt-2 mb-5">
+            <ul class="mt-2 mb-5 text-sm">
               <li class="mb-2">Free hosting (optional)</li>
               <li class="mb-2">Content updates (e.g., text, images, PDFs)</li>
               <li class="mb-2">Monthly plugin, theme & core updates</li>
@@ -353,7 +353,7 @@
             <p class="border-b border-gray-200 pb-3">Ideal for regular updates and new content.
               Includes everything in Essentials, plus:
             </p>
-            <ul class="mt-2 mb-5">
+            <ul class="mt-2 mb-5 text-sm">
               <li class="mb-2">Light design or layout tweaks</li>
               <li class="mb-2">Adding blog posts/events (client-provided content)</li>
               <li class="mb-2">Adding pages (client-provided content)</li>
@@ -370,7 +370,7 @@
             <p class="border-b border-gray-200 pb-3">Ongoing design, dev, or feature work.
               Includes everything in Proactive, plus:
             </p>
-            <ul class="mt-2 mb-5">
+            <ul class="mt-2 mb-5 text-sm">
               <li class="mb-2">Custom development hours (e.g., new blocks, templates)</li>
               <li class="mb-2">Small features or integrations (e.g., new forms, plugin setups)</li>
             </ul>
@@ -384,13 +384,15 @@
 
       <!-- Fine print -->
       <section id="fine-print" class="swiper-slide bg-white justify-center">
-        <h2>📎 The Fine Print</h2>
+        <h2 class="flex items-center gap-3 justify-center">
+          <img src="img/clip.svg" class="w-10 h-auto" alt=""> The Fine Print
+        </h2>
         <p class="text-xl mt-3">To ensure the success of this project and keep everything running smoothly, here are a
           few important details and expectations:
         </p>
-        <div class="grid grid-cols-3 mt-5">
-          <div class="px-5">
-            <p class="font-bold">🔐 Client Responsibilities</p>
+        <div class="grid grid-cols-3 mt-5 text-sm">
+          <div class="px-5 border-r border-gray-200">
+            <p class="font-bold">Client Responsibilities</p>
             To begin and progress the work efficiently, the client agrees to provide:
             <ul class="list-disc">
               <li>All necessary logins and access credentials (e.g., current website, hosting, domain registrar,
@@ -402,12 +404,12 @@
                 delays to the project timeline.</li>
             </ul>
           </div>
-          <div class="px-5">
-            <p class="font-bold">🎨 Design Approval & Edits</p>
+          <div class="px-5 border-r border-gray-200">
+            <p class="font-bold">Design Approval & Edits</p>
             You will receive two homepage design concepts.
             Once a direction is selected, you’ll receive one round of revisions to refine it.
             Additional revisions or change requests outside the agreed scope will be billed at $50/hour.
-            <br><b class="font-bold">Payment Schedule</b><br>
+            <br><br><b class="font-bold">Payment Schedule</b><br>
             The project total of $11,000 will be divided into three payments:
             <ul class="list-disc">
               <li>$4,000 — Due upon project start (deposit)</li>
@@ -416,7 +418,7 @@
             </ul>
           </div>
           <div class="px-5">
-            <p class="font-bold">🛠️ Maintenance & Support</p>
+            <p class="font-bold">Maintenance & Support</p>
             <ul class="list-disc">
               <li>The project includes a 3-month post-launch warranty, which covers technical support for theme-related
                 bugs and integration issues, and periodic site testing.</li>
@@ -433,9 +435,11 @@
             </ul>
           </div>
         </div>
-        <p class="font-bold">🌐 Hosting (Optional)</p>
-        Free hosting is available through my trusted hosting provider. While optional, this does not reduce the
-        plan's cost if you opt to host elsewhere.
+        <p>
+          <span class="font-bold">🌐 Hosting (Optional)</span><br>
+          Free hosting is available through my trusted hosting provider. While optional, this does not reduce the
+          plan's cost if you opt to host elsewhere.
+        </p>
       </section>
 
 
@@ -460,7 +464,8 @@
               <b>Recent Projects:</b> <br>
               <a href="https://via-forma.com/" target="_blank" rel="nofollow">Via Forma</a> - UI Design, Development<br>
               <a href="http://www.smallchichotels.com/" target="_blank" rel="nofollow">Small Chic Hotels</a> - UI
-              Design, Development<br>
+              Design,
+              Development<br>
               <a href="https://kronkosky.org/" target="_blank" rel="nofollow">Kronkosky Foundation</a> - Development<br>
               <a href="https://vibrantworks.org/" target="_blank" rel="nofollow">Vibrant Works</a> - Development<br>
               <a href="https://saparks.org/" target="_blank" rel="nofollow">San Antonio Parks Foundation</a> -
