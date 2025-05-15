@@ -9,13 +9,15 @@
 button,
 .btn,
 input[type='button'] {
-  background: tint($light--gray, 40%);
+  background:  $primary-color;
+  color: black;
   cursor: pointer;
   display: inline-block;
-  font-size: 1em;
-  line-height: 1.5;
-  margin-bottom: 0.5em;
-  padding: 1em 1.375em;
+  font-size: 20px;
+  font-variation-settings: 'wght' 600, 'wdth' 100;
+  line-height: 1;
+  padding: .6em 1em .4em;
+  border-radius: 20px;;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;

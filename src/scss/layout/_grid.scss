@@ -20,6 +20,10 @@ body {
   padding: 0 2rem;
 }
 
+.section-padding {
+  padding-top: 15rem;  
+}
+
 // intro section
 
 .two-col {
@@ -62,47 +66,86 @@ body {
 }
 
 // skills section
-.skills {
-  display: flex;
-  align-items: baseline;
-  margin: 2rem auto;
-  background: black;
-  color: white;
-  border-radius: 25px;
-  padding: 0;
+.sub-intro {
+  max-width: calc(1100px + 2rem);
+ 
+}
 
-  .marker {
-    background-color: $primary-color;
-    border-radius: 25px 0 0 25px;
-    color: black;
-    padding: 1rem 2rem 0.5rem;
-    display: inline-block;
+// Work
+.work-container {
+  
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  overflow: scroll;
+  padding: 3.5rem 2rem;
+  gap: 0 6rem;
+}
+
+.work-container > div {
+  min-width: 100vw;
+}
+
+.project {
+
+  .project-showcase {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .project-title-image {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: center;
+
+    .name {
+      grid-column: 1 / span 6;
+      grid-row: 1 / 1;
+
+      h2 {
+        color: white;
+        font-size: 86px;
+        font-variation-settings: 'wght' 700, 'wdth' 100;
+      }
+    }
+
+    .feature-portfolio {
+      grid-column: 5 / -1;
+      grid-row: 1 / 1;
+      height: calc(100vh - 6rem - 80px);
+      width: 100%;
+      object-fit: cover;
+      
+    }
+  }
+
+  .project-details {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+
+    > div {
+      // grid span 2 columns
+      color: white;
+      font-variation-settings: 'wght' 300, 'wdth' 100;
+      
+      h5 {
+        font-variation-settings: 'wght' 600, 'wdth' 100;
+        margin-bottom: 5px;
+      }
+    }
+
   }
 }
 
+
 // about section
-.about {
-  padding: 3rem 0 8rem;
+.about {  
   color: white;
-  border-radius: 25px;
-  position: relative;
-  overflow: hidden;
+  padding: 7rem 0;
 
-  .je-portrait {
-    width: 50vw;
-    bottom: 0;
-    display: block;
-    position: absolute;
-    z-index: 0;
-    opacity: 0.4;
-    max-width: 800px;
-  }
-
-  .container {
-    z-index: 1;
-    position: inherit;
-    padding-left: 35vw;
-  }
 
   /* Small Devices, tablets portrait */
   @media only screen and (max-width: 768px) {
@@ -111,11 +154,7 @@ body {
     .je-portrait {
       width: 100vw;
       position: relative;
-    }
-
-    .container {
-      padding-left: 2rem;
-    }
+    }    
   }
 }
 
@@ -141,13 +180,27 @@ body {
   margin: 2rem auto;
 }
 
+.footer-scroller {
+  // font size clamp max 240px
+  font-size: 240px;
+  width: 100%;
+  font-variation-settings: 'wght' 900, 'wdth' 100;
+  overflow: hidden;
+  white-space: nowrap;
+
+  span {
+    display: block;    
+  }
+  
+}
+
 // footer
 .collab {
   color: $dark-color;
 }
 
 .footer-marquee {
-  border-radius: 25px;
+  
   @extend .background--primary;
 }
 
@@ -155,6 +208,23 @@ body {
 .is-hidden {
   visibility: hidden;
 }
+.social {
+  list-style: none inside;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 4rem;
+  justify-content: center;
+
+  img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+
+
+
+
 
 // vcard
 .body-vcard {
