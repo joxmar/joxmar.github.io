@@ -1,4 +1,6 @@
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
 
 export default function initAnimations() {
   // GSAP intros
@@ -21,3 +23,184 @@ export default function initAnimations() {
     // delay: 1,
   });
 }
+
+
+/*************************
+ Horizontal scroll styles 
+  responsive: get the container and window widths and return the difference in a function
+  invalidateOnRefresh: true, tells scrolltrigger to refresh automatically
+**************************/
+
+// portfolio horizontal scroller
+const projects = gsap.utils.toArray('.project');
+const projectContainer = document.querySelector('.work-container');
+
+// Initialize project elements to be hidden
+projects.forEach(project => {
+  const elements = [
+    project.querySelector('.name'),
+    project.querySelector('.feature-portfolio'),
+    project.querySelector('.project-details')
+  ].filter(Boolean);
+  
+  gsap.set(elements, {
+    opacity: 0,
+    y: 50
+  });
+});
+
+function getScrollDistance() {
+  // Get the total width of all projects plus gaps
+  const projectWidth = projects[0].offsetWidth;
+  const gap = parseInt(window.getComputedStyle(projectContainer).gap) || (96 * 2); // 6rem = 96px fallback. x2 to account for left and right gap on the last project
+  const totalWidth = projectWidth * projects.length + (window.innerWidth / 3) * (projects.length - 1);
+  const containerWidth = projectContainer.offsetWidth;
+  
+  return -(totalWidth - containerWidth);
+}
+
+let scrollTween = gsap.to(projects, {
+  x: getScrollDistance,
+  ease: 'none',
+  scrollTrigger: {
+    trigger: '#work',
+    start: 'top 0%',
+    pin: true,
+    scrub: 1,
+    end: '+=1500',
+    // markers: true,
+    invalidateOnRefresh: true
+  }
+});
+
+// change the background of the body based on when each .project enters the viewport during horizontal scroll
+ScrollTrigger.create({
+  trigger: '#work',
+  start: 'top 0%',
+  end: '+=1500',
+  scrub: true,
+  onUpdate: (self) => {
+    // Get the viewport center point
+    const viewportCenter = window.innerWidth / 2;
+    let closestProject = null;
+    let closestDistance = Infinity;
+    
+    // Find which project is closest to the center of the viewport
+    projects.forEach((project, index) => {
+      const rect = project.getBoundingClientRect();
+      const projectCenter = rect.left + (rect.width / 2);
+      const distanceFromCenter = Math.abs(projectCenter - viewportCenter);
+      
+      if (distanceFromCenter < closestDistance) {
+        closestDistance = distanceFromCenter;
+        closestProject = index;
+      }
+    });
+    
+    if (closestProject !== null) {      
+      
+      // Change background color
+      if (projects[closestProject] && projects[closestProject].dataset.brandColor) {
+        document.body.style.backgroundColor = projects[closestProject].dataset.brandColor;
+      }
+      
+      // Animate project elements when they become active
+      animateProjectElements(closestProject);
+    }
+  },
+  onLeave: () => {
+    // Reset background when leaving the work section (going down)
+    document.body.style.backgroundColor = 'transparent';
+    resetProjectElements();
+  },
+  onLeaveBack: () => {
+    // Reset background when leaving the work section (going up) 
+    document.body.style.backgroundColor = 'transparent';
+    resetProjectElements();
+  },
+  onEnterBack: () => {
+    // Find which project is currently closest to center
+    const viewportCenter = window.innerWidth / 2;
+    let closestProject = 0;
+    let closestDistance = Infinity;
+    
+    projects.forEach((project, index) => {
+      const rect = project.getBoundingClientRect();
+      const projectCenter = rect.left + (rect.width / 2);
+      const distanceFromCenter = Math.abs(projectCenter - viewportCenter);
+      
+      if (distanceFromCenter < closestDistance) {
+        closestDistance = distanceFromCenter;
+        closestProject = index;
+      }
+    });
+    
+    // Set background color for the closest project
+    if (projects[closestProject] && projects[closestProject].dataset.brandColor) {
+      document.body.style.backgroundColor = projects[closestProject].dataset.brandColor;
+    }
+    
+    // Reset the tracking variable and animate the closest project
+    currentActiveProject = -1;
+    animateProjectElements(closestProject);
+  }
+});
+
+// Function to animate project elements with stagger
+let currentActiveProject = -1;
+function animateProjectElements(activeIndex) {
+  // Only animate if we've moved to a different project
+  if (activeIndex === currentActiveProject) return;
+  
+  currentActiveProject = activeIndex;
+  const currentProject = projects[activeIndex];
+  // console.log(currentProject);
+  
+  if (!currentProject) return;
+  
+  // Get the elements to animate
+  const name = currentProject.querySelector('.name');
+  const featurePortfolio = currentProject.querySelector('.feature-portfolio');
+  const projectDetails = currentProject.querySelector('.project-details');
+  
+  const elementsToAnimate = [name, featurePortfolio, projectDetails].filter(Boolean);
+  
+  // Reset all project elements first
+  resetProjectElements();
+  
+  // Animate the current project elements with stagger
+  if (elementsToAnimate.length > 0) {
+    gsap.fromTo(elementsToAnimate, 
+      {
+        opacity: 0,
+        y: 50
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power2.out"
+      }
+    );
+  }
+}
+
+function resetProjectElements() {
+   projects.forEach(project => {
+    const elements = [
+      project.querySelector('.name'),
+      project.querySelector('.feature-portfolio'),
+      project.querySelector('.project-details')
+    ].filter(Boolean);
+    
+    gsap.to(elements, {
+      opacity: 0,
+      y: 50,
+      stagger: 0.2,
+      ease: "power2.out"
+
+    });
+  });
+}
+
