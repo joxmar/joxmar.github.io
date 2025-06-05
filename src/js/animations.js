@@ -204,3 +204,25 @@ function resetProjectElements() {
   });
 }
 
+
+
+// Animate About section
+// change body background color to black when entering the #about section, change it back to transparent  when leaving
+ScrollTrigger.create({
+  trigger: '#about',
+  start: 'top 100%',
+  end: '+=1000',
+  markers: true,
+  onEnter: () => {
+    document.body.style.backgroundColor = '#080808';
+  },
+  onLeave: () => {
+    document.body.style.backgroundColor = 'transparent';
+  },
+  onEnterBack: () => {
+    document.body.style.backgroundColor = '#080808';
+  },
+  onLeaveBack: () => {
+    document.body.style.backgroundColor = 'transparent';
+  }
+});
