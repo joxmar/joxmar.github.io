@@ -226,3 +226,29 @@ ScrollTrigger.create({
     document.body.style.backgroundColor = 'transparent';
   }
 });
+
+
+// 'let's buils something word scrtolling for' scroller
+const races = document.querySelector(".hor-scroller-inner");
+function getScrollAmount() {
+  let racesWidth = races.offsetWidth;  
+  return -(racesWidth - window.innerWidth + 96);
+}
+// console.log(races,racesWidth,amountToScroll, window.innerWidth);
+
+const tween = gsap.to(races, {
+  x: getScrollAmount,
+  duration: 2,
+  ease: 'linear'
+});
+
+ScrollTrigger.create({
+  trigger: '.hor-scroller',
+  start: 'top 50%',
+  // end: "bottom -20vh",
+  end: '+=1000',
+  pin: true,
+  animation: tween,
+  scrub: 2,
+  invalidateOnRefresh: true,
+});
