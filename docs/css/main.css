@@ -629,6 +629,11 @@ mark {
   font-variation-settings: "wght" 900, "wdth" 100;
 }
 
+.sub-intro h2 span,
+.sub-intro p {
+  opacity: 0;
+}
+
 /* Helpers */
 .align-left {
   text-align: left;
@@ -892,7 +897,7 @@ body {
 
 .about {
   color: white;
-  padding: 7rem 0;
+  padding: 0 0 7rem 0;
   /* Small Devices, tablets portrait */
 }
 @media only screen and (max-width: 768px) {
@@ -944,6 +949,27 @@ body {
 
 .collab {
   color: #080808;
+}
+
+.footer-logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+.footer-logo img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .is-hidden {

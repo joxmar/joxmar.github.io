@@ -128,3 +128,10 @@ mark {
 .to-black:hover {
   font-variation-settings: 'wght' 900, 'wdth' 100;
 }
+
+// animated spans via gsap need opacity
+.sub-intro h2 span,
+.sub-intro p {
+  opacity: 0;
+  
+}

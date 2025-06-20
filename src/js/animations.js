@@ -25,13 +25,74 @@ export default function initAnimations() {
 }
 
 
-/*************************
- Horizontal scroll styles 
-  responsive: get the container and window widths and return the difference in a function
-  invalidateOnRefresh: true, tells scrolltrigger to refresh automatically
-**************************/
+// sub-intro animation
+const subIntro = document.querySelector('.sub-intro h2');
+const subIntroP = document.querySelector('.sub-intro p');
 
-// portfolio horizontal scroller
+if (subIntro && subIntroP) {
+  const text = subIntro.textContent;
+  subIntro.innerHTML = text.split('').map(char => `<span>${char}</span>`).join('');
+  
+  // Create a timeline to sequence the animations
+  const subIntroTimeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: subIntro,
+      start: 'top 80%',
+      end: 'top 50%',
+      scrub: false,
+      invalidateOnRefresh: true
+    }
+  });
+  
+  // First animate the h2 spans
+  subIntroTimeline.fromTo(subIntro.querySelectorAll('span'), {
+    y: '100',
+    autoAlpha: 0
+  }, {
+    y: '0',
+    autoAlpha: 1,
+    duration: 1,
+    ease: 'power2.out',
+    stagger: 0.05
+  })
+  // Then animate the paragraph after h2 completes
+  .fromTo(subIntroP, {
+    y: '100',
+    autoAlpha: 0
+  }, {
+    y: 50,
+    autoAlpha: 1,
+    duration: 1,
+    ease: 'power2.out'
+  }, "+=0.2"); // Small delay after h2 completes
+}
+
+
+
+// Reusable title animation for .title-section elements
+document.querySelectorAll('.title-section').forEach(title => {
+  gsap.from(title, {
+    filter: 'blur(15px)',
+    y: '-10',
+    autoAlpha: 0,
+    duration: 1,
+    clearProps: 'filter',
+    scrollTrigger: {
+      trigger: title.parentElement,
+      start: 'top 20%',
+      end: 'top 0%',
+      scrub: 1,
+      invalidateOnRefresh: true
+    }
+  });
+});
+
+
+/**********************************************
+  portfolio horizontal scroller
+************************************************/
+
+
 const projects = gsap.utils.toArray('.project');
 const projectContainer = document.querySelector('.work-container');
 
@@ -73,7 +134,7 @@ let scrollTween = gsap.to(projects, {
   }
 });
 
-// change the background of the body based on when each .project enters the viewport during horizontal scroll
+// portfolio scroll trigger
 ScrollTrigger.create({
   trigger: '#work',
   start: 'top 0%',
@@ -110,12 +171,12 @@ ScrollTrigger.create({
   },
   onLeave: () => {
     // Reset background when leaving the work section (going down)
-    document.body.style.backgroundColor = 'transparent';
+    document.body.style.backgroundColor = '#ffffff';
     resetProjectElements();
   },
   onLeaveBack: () => {
     // Reset background when leaving the work section (going up) 
-    document.body.style.backgroundColor = 'transparent';
+    document.body.style.backgroundColor = '#ffffff';
     resetProjectElements();
   },
   onEnterBack: () => {
@@ -157,6 +218,10 @@ function animateProjectElements(activeIndex) {
   // console.log(currentProject);
   
   if (!currentProject) return;
+
+  // Reset all project elements first
+  resetProjectElements();
+
   
   // Get the elements to animate
   const name = currentProject.querySelector('.name');
@@ -165,8 +230,7 @@ function animateProjectElements(activeIndex) {
   
   const elementsToAnimate = [name, featurePortfolio, projectDetails].filter(Boolean);
   
-  // Reset all project elements first
-  resetProjectElements();
+  
   
   // Animate the current project elements with stagger
   if (elementsToAnimate.length > 0) {
@@ -205,30 +269,37 @@ function resetProjectElements() {
 }
 
 
+ 
 
-// Animate About section
-// change body background color to black when entering the #about section, change it back to transparent  when leaving
+
+/**********************************************
+  Animate About section
+************************************************/
+
 ScrollTrigger.create({
   trigger: '#about',
   start: 'top 100%',
   end: '+=1000',
-  markers: true,
+  // markers: true,
   onEnter: () => {
     document.body.style.backgroundColor = '#080808';
   },
   onLeave: () => {
-    document.body.style.backgroundColor = 'transparent';
+    document.body.style.backgroundColor = '#ffffff';
   },
   onEnterBack: () => {
     document.body.style.backgroundColor = '#080808';
   },
   onLeaveBack: () => {
-    document.body.style.backgroundColor = 'transparent';
+    document.body.style.backgroundColor = '#ffffff';
   }
 });
 
 
-// 'let's buils something word scrtolling for' scroller
+
+/**********************************************
+  'let's buils something word scrtolling for' scroller
+************************************************/
 const races = document.querySelector(".hor-scroller-inner");
 function getScrollAmount() {
   let racesWidth = races.offsetWidth;  

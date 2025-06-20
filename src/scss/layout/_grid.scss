@@ -156,7 +156,7 @@ body {
 // about section
 .about {  
   color: white;
-  padding: 7rem 0;
+  padding: 0 0 7rem 0;
 
 
   /* Small Devices, tablets portrait */
@@ -214,6 +214,21 @@ body {
 .footer-marquee {
   
   @extend .background--primary;
+}
+
+.footer-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+
+  img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    object-fit: contain;
+  }
 }
 
 // hidden on load for animation
