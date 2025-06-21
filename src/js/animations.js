@@ -173,11 +173,25 @@ ScrollTrigger.create({
     // Reset background when leaving the work section (going down)
     document.body.style.backgroundColor = '#ffffff';
     resetProjectElements();
+    // Pause all videos when leaving work section
+    projects.forEach(project => {
+      const video = project.querySelector('video');
+      if (video) {
+        video.pause();
+      }
+    });
   },
   onLeaveBack: () => {
     // Reset background when leaving the work section (going up) 
     document.body.style.backgroundColor = '#ffffff';
     resetProjectElements();
+    // Pause all videos when leaving work section
+    projects.forEach(project => {
+      const video = project.querySelector('video');
+      if (video) {
+        video.pause();
+      }
+    });
   },
   onEnterBack: () => {
     // Find which project is currently closest to center
@@ -248,6 +262,14 @@ function animateProjectElements(activeIndex) {
       }
     );
   }
+  
+  // Play video for active project
+  const activeVideo = currentProject.querySelector('video');
+  if (activeVideo) {
+    activeVideo.play().catch(error => {
+      console.log('Video autoplay failed:', error);
+    });
+  }
 }
 
 function resetProjectElements() {
@@ -263,8 +285,14 @@ function resetProjectElements() {
       y: 50,
       stagger: 0.2,
       ease: "power2.out"
-
     });
+    
+    // Pause videos for non-active projects
+    const video = project.querySelector('video');
+    if (video) {
+      video.pause();
+      video.currentTime = 0; // Reset to beginning
+    }
   });
 }
 
