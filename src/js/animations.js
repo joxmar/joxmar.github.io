@@ -139,7 +139,7 @@ ScrollTrigger.create({
   trigger: '#work',
   start: 'top 0%',
   end: '+=1500',
-  scrub: true,
+  scrub: 4,
   onUpdate: (self) => {
     // Get the viewport center point
     const viewportCenter = window.innerWidth / 2;
