@@ -1,7 +1,11 @@
 import initAnimations from './animations.js';
 import initMouseTrail from './mouse-trail.js';
+import initPortfolio from './portfolio.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+  // initialize the portfolio
+  initPortfolio();
+
   // Initialize animations
   initAnimations();
 
@@ -12,13 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
   loader();
 });
 
-
 function loader() {
   // Years of experience
   const years = document.getElementById('yr-exp');
   const start = 2009; // i know it was OCt 2008 but I want to use the word "over" in the intro text, it is just 2 months.
   const current = new Date().getFullYear();
-  years.textContent = current - start;  
+  years.textContent = current - start;
 }
 
 // parallax
@@ -29,7 +32,6 @@ window.addEventListener('scroll', () => {
     bg.style.top = -val * 0.25 + 'px';
   });
 });
-
 
 // mouse grab effect
 let chain = document.querySelector('.pull-string');
