@@ -860,7 +860,7 @@ body {
           align-items: center;
 }
 .project .project-title-image .name {
-  grid-column: 1/span 6;
+  grid-column: 1/span 5;
   grid-row: 1/1;
   z-index: 1;
 }
@@ -872,7 +872,7 @@ body {
 .project .project-title-image .feature-portfolio {
   grid-column: 5/-1;
   grid-row: 1/1;
-  height: calc(100vh - 6rem - 80px);
+  aspect-ratio: 1.904/1;
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -893,6 +893,38 @@ body {
 .project .project-details > div h5 {
   font-variation-settings: "wght" 600, "wdth" 100;
   margin-bottom: 5px;
+}
+@media only screen and (max-width: 768px) {
+  .project .project-title-image {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    gap: 1rem;
+  }
+  .project .project-title-image .name h2 {
+    color: white;
+    font-size: 56px;
+    line-height: 1;
+  }
+  .project .project-details {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    -webkit-box-align: normal;
+        -ms-flex-align: normal;
+            align-items: normal;
+  }
 }
 
 .about {
@@ -945,6 +977,11 @@ body {
 }
 .footer-scroller span {
   display: block;
+}
+@media only screen and (max-width: 768px) {
+  .footer-scroller {
+    font-size: 120px;
+  }
 }
 
 .collab {

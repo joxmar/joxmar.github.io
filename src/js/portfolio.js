@@ -2,55 +2,111 @@ import { initPortfolioAnimations } from './animations.js';
 
 const portfolioData = [
   {
-    id: 1,
     title: 'Small chic hotels',
     brandColor: '#7C181A',
-    agency: '2 Hats Media',
-    role: 'development',
-    technology: 'HTML, CSS, JavaScript',
-    url: 'https://www.2hatsmedia.com/',
+    agency: 'Small Chic Hotels',
+    role: 'UX Strategy, UI design, Full-stack development',
+    technology: 'CSS, JavaScript, PHP, MySQL, WordPress',
+    url: 'http://www.smallchichotels.com/',
     media: {
       type: 'video',
-      src: 'images/video.mp4',
+      src: 'https://api.jelvir.com/portfolio/small-chic.mp4',
     },
   },
   {
-    id: 2,
-    title: 'E-commerce Platform',
+    title: 'Via Forma',
     brandColor: '#0A0435',
-    agency: 'Digital Agency',
-    role: 'Full-stack development',
-    technology: 'React, Node.js, MongoDB',
-    url: 'https://example.com',
+    agency: 'Independent',
+    role: 'UX Strategy, UI design, Full-stack development',
+    technology: 'CSS, JavaScript, PHP, MySQL, WordPress',
+    url: 'http://via-forma.com/',
     media: {
       type: 'video',
-      src: 'images/video.mp4',
+      src: 'https://api.jelvir.com/portfolio/via-forma.mp4',
     },
   },
   {
-    id: 3,
-    title: 'Brand Identity Website',
+    title: 'ATKG Advisors',
     brandColor: '#0099CC',
-    agency: 'Creative Studio',
-    role: 'Frontend development',
-    technology: 'Vue.js, SCSS, Webpack',
-    url: 'https://example.com',
+    agency: 'Parallel, a brand agency',
+    role: 'Full-stack development',
+    technology: 'CSS, JavaScript, PHP, MySQL, WordPress',
+    url: 'https://atkg.com/',
     media: {
       type: 'video',
-      src: 'images/video.mp4',
+      src: 'https://api.jelvir.com/portfolio/atkg.mp4',
     },
   },
   {
-    id: 4,
-    title: 'Portfolio Showcase',
+    title: 'Kronkosky Foundation',
     brandColor: '#582B76',
     agency: 'Independent',
     role: 'Full-stack development',
-    technology: 'WordPress, PHP, MySQL',
-    url: 'https://example.com',
+    technology: 'CSS, JavaScript, PHP, MySQL, WordPress',
+    url: 'https://kronkosky.org',
     media: {
       type: 'video',
-      src: 'images/video.mp4',
+      src: 'https://api.jelvir.com/portfolio/kronkosky.mp4',
+    },
+  },
+  {
+    title: 'Talk About It Texas',
+    brandColor: '#d83094',
+    agency: 'Parallel, a brand agency',
+    role: 'Full-stack development',
+    technology: 'CSS, JavaScript, PHP, MySQL, WordPress',
+    url: 'https://talkaboutittx.org/',
+    media: {
+      type: 'video',
+      src: 'https://api.jelvir.com/portfolio/tait.mp4',
+    },
+  },
+  {
+    title: 'Vibrant Works',
+    brandColor: '#017683',
+    agency: 'Parallel, a brand agency',
+    role: 'Full-stack development',
+    technology: 'CSS, JavaScript, PHP, MySQL, WordPress',
+    url: 'https://vibrantworks.org/',
+    media: {
+      type: 'video',
+      src: 'https://api.jelvir.com/portfolio/vibrantworks.mp4',
+    },
+  },
+  {
+    title: 'Virtuoso Builders',
+    brandColor: '#1C2938',
+    agency: 'Parallel, a brand agency',
+    role: 'Full-stack development',
+    technology: 'CSS, JavaScript, PHP, MySQL, WordPress',
+    url: 'https://virtuosobuilders.com/',
+    media: {
+      type: 'video',
+      src: 'https://api.jelvir.com/portfolio/virtuoso.mp4',
+    },
+  },
+  {
+    title: 'Texas Ranger Whiskey',
+    brandColor: '#28251F',
+    agency: 'Parallel, a brand agency',
+    role: 'Full-stack development',
+    technology: 'CSS, JavaScript, PHP, MySQL, WordPress',
+    url: 'https://texasranger1823whiskey.com/',
+    media: {
+      type: 'video',
+      src: 'https://api.jelvir.com/portfolio/texas-ranger.mp4',
+    },
+  },
+  {
+    title: 'San Antonio Parks Foundation',
+    brandColor: '#224420',
+    agency: 'Parallel, a brand agency',
+    role: 'Full-stack development',
+    technology: 'CSS, JavaScript, PHP, MySQL, WordPress',
+    url: 'https://saparks.org/',
+    media: {
+      type: 'video',
+      src: 'https://api.jelvir.com/portfolio/saparks.mp4',
     },
   },
 ];
@@ -85,7 +141,7 @@ function createProjectHTML(project) {
                     ${project.technology}
                 </div>
                 <div>
-                    <a href="${project.url}" target="_blank" rel="noopener" class="btn">Launch Project</a>
+                    <a href="${project.url}" target="_blank" rel="noopener noreferrer" class="btn">Launch Project</a>
                 </div>
             </div>
         </div>

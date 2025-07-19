@@ -162,6 +162,58 @@ export function initPortfolioAnimations() {
     return;
   }
 
+  // Mobile touch handling to prevent scroll conflicts
+  let isPortfolioSection = false;
+  const isMobile =
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    ) || window.innerWidth < 768;
+
+  // Add touch event listeners for mobile
+  const workSection = document.getElementById('work');
+  if (workSection && isMobile) {
+    // Prevent momentum scrolling issues on mobile
+    let touchStartY = 0;
+
+    workSection.addEventListener(
+      'touchstart',
+      (e) => {
+        touchStartY = e.touches[0].clientY;
+      },
+      { passive: true }
+    );
+
+    workSection.addEventListener(
+      'touchmove',
+      (e) => {
+        if (isPortfolioSection) {
+          const touchCurrentY = e.touches[0].clientY;
+          const deltaY = Math.abs(touchCurrentY - touchStartY);
+
+          // Only prevent if it's a small vertical movement (likely accidental)
+          if (deltaY < 10) {
+            e.preventDefault();
+          }
+        }
+      },
+      { passive: false }
+    );
+
+    // Prevent overscroll behavior that might cause jumps
+    workSection.addEventListener(
+      'touchend',
+      (e) => {
+        if (isPortfolioSection) {
+          // Small delay to prevent momentum scroll conflicts
+          setTimeout(() => {
+            window.scrollTo(0, window.scrollY);
+          }, 1);
+        }
+      },
+      { passive: true }
+    );
+  }
+
   // Initialize project elements to be hidden
   projects.forEach((project) => {
     const elements = [
@@ -197,9 +249,23 @@ export function initPortfolioAnimations() {
       start: 'top 0%',
       pin: true,
       scrub: 1,
-      end: '+=3000',
+      end: '+=6000',
       // markers: true,
       invalidateOnRefresh: true,
+      anticipatePin: 1, // Helps with mobile performance
+      onEnter: () => {
+        // Prevent body scroll issues on mobile
+        document.body.style.overflowX = 'hidden';
+        isPortfolioSection = true;
+      },
+      onLeave: () => {
+        document.body.style.overflowX = 'auto';
+        isPortfolioSection = false;
+      },
+      onLeaveBack: () => {
+        document.body.style.overflowX = 'auto';
+        isPortfolioSection = false;
+      },
     },
   });
 
@@ -207,7 +273,7 @@ export function initPortfolioAnimations() {
   ScrollTrigger.create({
     trigger: '#work',
     start: 'top 0%',
-    end: '+=3000',
+    end: '+=6000',
     scrub: 4,
     onUpdate: (self) => {
       // Get the viewport center point
@@ -243,7 +309,20 @@ export function initPortfolioAnimations() {
     },
     onLeave: () => {
       // Reset background when leaving the work section (going down)
-      document.body.style.backgroundColor = '#ffffff';
+      // Check if we're going to the about section
+      const aboutSection = document.getElementById('about');
+      if (aboutSection) {
+        const aboutRect = aboutSection.getBoundingClientRect();
+        if (aboutRect.top < window.innerHeight) {
+          // We're entering the about section, set it to black
+          document.body.style.backgroundColor = '#080808';
+        } else {
+          // We're going somewhere else, reset to white
+          document.body.style.backgroundColor = '#ffffff';
+        }
+      } else {
+        document.body.style.backgroundColor = '#ffffff';
+      }
       resetProjectElements();
       // Pause all videos when leaving work section
       projects.forEach((project) => {

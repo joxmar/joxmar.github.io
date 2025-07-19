@@ -21,7 +21,7 @@ body {
 }
 
 .section-padding {
-  padding-top: 15rem;  
+  padding-top: 15rem;
 }
 
 // intro section
@@ -68,12 +68,10 @@ body {
 // skills section
 .sub-intro {
   max-width: calc(1100px + 2rem);
- 
 }
 
 // Work
 .work-container {
-  
   display: flex;
   flex-wrap: nowrap;
   width: 100%;
@@ -98,7 +96,6 @@ body {
 }
 
 .project {
-
   .project-showcase {
     display: flex;
     gap: 2rem;
@@ -110,7 +107,7 @@ body {
     align-items: center;
 
     .name {
-      grid-column: 1 / span 6;
+      grid-column: 1 / span 5;
       grid-row: 1 / 1;
       z-index: 1;
 
@@ -124,10 +121,9 @@ body {
     .feature-portfolio {
       grid-column: 5 / -1;
       grid-row: 1 / 1;
-      height: calc(100vh - 6rem - 80px);
+      aspect-ratio: 1.904 / 1;
       width: 100%;
       object-fit: cover;
-      
     }
   }
 
@@ -142,22 +138,40 @@ body {
       // grid span 2 columns
       color: white;
       font-variation-settings: 'wght' 300, 'wdth' 100;
-      
+
       h5 {
         font-variation-settings: 'wght' 600, 'wdth' 100;
         margin-bottom: 5px;
       }
     }
+  }
 
+  @media only screen and (max-width: 768px) {
+    .project-title-image {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      gap: 1rem;
+
+      .name h2 {
+        color: white;
+        font-size: 56px;
+        line-height: 1;
+      }
+    }
+
+    .project-details {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: normal;
+    }
   }
 }
 
-
 // about section
-.about {  
+.about {
   color: white;
   padding: 0 0 7rem 0;
-
 
   /* Small Devices, tablets portrait */
   @media only screen and (max-width: 768px) {
@@ -166,7 +180,7 @@ body {
     .je-portrait {
       width: 100vw;
       position: relative;
-    }    
+    }
   }
 }
 
@@ -188,7 +202,7 @@ body {
 }
 
 .footer {
-  padding: 6rem 0 0 0;  
+  padding: 6rem 0 0 0;
 }
 
 .footer-scroller {
@@ -201,9 +215,11 @@ body {
   display: flex;
 
   span {
-    display: block;    
+    display: block;
   }
-  
+  @media only screen and (max-width: 768px) {
+    font-size: 120px;
+  }
 }
 
 // footer
@@ -212,7 +228,6 @@ body {
 }
 
 .footer-marquee {
-  
   @extend .background--primary;
 }
 
@@ -247,11 +262,6 @@ body {
     height: 30px;
   }
 }
-
-
-
-
-
 
 // vcard page
 .body-vcard {
