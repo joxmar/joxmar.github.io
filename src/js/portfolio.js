@@ -40,7 +40,7 @@ const portfolioData = [
   {
     title: 'Kronkosky Foundation',
     brandColor: '#582B76',
-    agency: 'Independent',
+    agency: 'Parallel, a brand agency',
     role: 'Full-stack development',
     technology: 'CSS, JavaScript, PHP, MySQL, WordPress',
     url: 'https://kronkosky.org',
