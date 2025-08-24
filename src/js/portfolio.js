@@ -2,6 +2,18 @@ import { initPortfolioAnimations } from './animations.js';
 
 const portfolioData = [
   {
+    title: 'Thomas Just',
+    brandColor: '#002f86',
+    agency: 'Thomas Just for Hays County Court at Law',
+    role: 'UX Strategy, UI design, Full-stack development',
+    technology: 'CSS, JavaScript, PHP, MySQL, WordPress',
+    url: 'https://justforhays.com/',
+    media: {
+      type: 'video',
+      src: 'https://api.jelvir.com/portfolio/thomas-just.mp4',
+    },
+  },
+  {
     title: 'Small chic hotels',
     brandColor: '#7C181A',
     agency: 'Small Chic Hotels',
@@ -85,18 +97,18 @@ const portfolioData = [
       src: 'https://api.jelvir.com/portfolio/virtuoso.mp4',
     },
   },
-  {
-    title: 'Texas Ranger Whiskey',
-    brandColor: '#28251F',
-    agency: 'Parallel, a brand agency',
-    role: 'Full-stack development',
-    technology: 'CSS, JavaScript, PHP, MySQL, WordPress',
-    url: 'https://texasranger1823whiskey.com/',
-    media: {
-      type: 'video',
-      src: 'https://api.jelvir.com/portfolio/texas-ranger.mp4',
-    },
-  },
+  // {
+  //   title: 'Texas Ranger Whiskey',
+  //   brandColor: '#28251F',
+  //   agency: 'Parallel, a brand agency',
+  //   role: 'Full-stack development',
+  //   technology: 'CSS, JavaScript, PHP, MySQL, WordPress',
+  //   url: 'https://texasranger1823whiskey.com/',
+  //   media: {
+  //     type: 'video',
+  //     src: 'https://api.jelvir.com/portfolio/texas-ranger.mp4',
+  //   },
+  // },
   {
     title: 'San Antonio Parks Foundation',
     brandColor: '#224420',
