@@ -4,7 +4,7 @@ const portfolioData = [
   {
     title: 'Thomas Just',
     brandColor: '#002f86',
-    agency: 'Thomas Just for Hays County Court at Law',
+    agency: 'Independent',
     role: 'UX Strategy, UI design, Full-stack development',
     technology: 'CSS, JavaScript, PHP, MySQL, WordPress',
     url: 'https://justforhays.com/',
