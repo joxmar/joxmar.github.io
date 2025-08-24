@@ -30,7 +30,7 @@ const portfolioData = [
     brandColor: '#0A0435',
     agency: 'Independent',
     role: 'UX Strategy, UI design, Full-stack development',
-    technology: 'CSS, JavaScript, PHP, MySQL, WordPress',
+    technology: 'CSS, JavaScript, PHP, MySQL, eCommerce, WordPress',
     url: 'http://via-forma.com/',
     media: {
       type: 'video',
