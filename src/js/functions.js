@@ -34,12 +34,12 @@ window.addEventListener('scroll', () => {
 });
 
 // mouse grab effect
-let chain = document.querySelector('.pull-string');
+// let chain = document.querySelector('.pull-string');
 
-chain.addEventListener('mousedown', function () {
-  this.classList.add('grabbed');
-});
+// chain.addEventListener('mousedown', function () {
+//   this.classList.add('grabbed');
+// });
 
-chain.addEventListener('mouseup', function () {
-  this.classList.remove('grabbed');
-});
+// chain.addEventListener('mouseup', function () {
+//   this.classList.remove('grabbed');
+// });
