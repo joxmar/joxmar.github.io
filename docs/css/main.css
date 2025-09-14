@@ -728,7 +728,7 @@ html {
 body {
   -webkit-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
-  background-color: white;
+  background-color: #fffff2;
 }
 
 #intro {
@@ -865,7 +865,7 @@ body {
   z-index: 1;
 }
 .project .project-title-image .name h2 {
-  color: white;
+  color: black;
   font-size: 86px;
   font-variation-settings: "wght" 700, "wdth" 100;
 }
@@ -887,7 +887,7 @@ body {
   margin-top: 1.5rem;
 }
 .project .project-details > div {
-  color: white;
+  color: black;
   font-variation-settings: "wght" 300, "wdth" 100;
 }
 .project .project-details > div h5 {
@@ -909,7 +909,7 @@ body {
     gap: 1rem;
   }
   .project .project-title-image .name h2 {
-    color: white;
+    color: black;
     font-size: 56px;
     line-height: 1;
   }
@@ -1512,7 +1512,8 @@ dl dd {
   top: 0;
 }
 .frosted-blob svg path {
-  fill: #fcee4b;
+  -webkit-transition: fill 0.3s ease;
+  transition: fill 0.3s ease;
   -webkit-animation: blob 15s linear infinite;
           animation: blob 15s linear infinite;
   -webkit-transform-origin: 50% 50%;

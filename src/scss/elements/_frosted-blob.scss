@@ -28,8 +28,7 @@
     top: 0;
 
     path {
-      // fill: #3e0a8c;
-      fill: $primary-color;
+      transition: fill 0.3s ease;
       animation: blob 15s linear infinite;
       transform-origin: 50% 50%;
     }

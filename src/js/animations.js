@@ -3,6 +3,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function initAnimations() {
+  const blobPath = document.getElementById('blob-path');
+
   // GSAP intros
   const TLLOAD = gsap.timeline({
     default: {
@@ -109,13 +111,15 @@ export default function initAnimations() {
       document.body.style.backgroundColor = '#080808';
     },
     onLeave: () => {
-      document.body.style.backgroundColor = '#ffffff';
+      document.body.style.backgroundColor = '#fffff2';
+      blobPath.setAttribute('fill', '#fcee4b');
     },
     onEnterBack: () => {
       document.body.style.backgroundColor = '#080808';
     },
     onLeaveBack: () => {
-      document.body.style.backgroundColor = '#ffffff';
+      document.body.style.backgroundColor = '#fffff2';
+      blobPath.setAttribute('fill', '#fcee4b');
     },
   });
 
@@ -154,6 +158,7 @@ export default function initAnimations() {
 
 // Portfolio animation function that can be called after portfolio is created
 export function initPortfolioAnimations() {
+  const blobPath = document.getElementById('blob-path');
   const projects = gsap.utils.toArray('.project');
   const projectContainer = document.querySelector('.work-container');
 
@@ -249,7 +254,7 @@ export function initPortfolioAnimations() {
       start: 'top 0%',
       pin: true,
       scrub: 1,
-      end: '+=6000',
+      end: '+=3000',
       // markers: true,
       invalidateOnRefresh: true,
       anticipatePin: 1, // Helps with mobile performance
@@ -273,7 +278,7 @@ export function initPortfolioAnimations() {
   ScrollTrigger.create({
     trigger: '#work',
     start: 'top 0%',
-    end: '+=6000',
+    end: '+=3000',
     scrub: 4,
     onUpdate: (self) => {
       // Get the viewport center point
@@ -299,8 +304,10 @@ export function initPortfolioAnimations() {
           projects[closestProject] &&
           projects[closestProject].dataset.brandColor
         ) {
-          document.body.style.backgroundColor =
-            projects[closestProject].dataset.brandColor;
+          blobPath.setAttribute(
+            'fill',
+            projects[closestProject].dataset.brandColor
+          );
         }
 
         // Animate project elements when they become active
@@ -312,16 +319,19 @@ export function initPortfolioAnimations() {
       // Check if we're going to the about section
       const aboutSection = document.getElementById('about');
       if (aboutSection) {
+        blobPath.setAttribute('fill', '#000000');
         const aboutRect = aboutSection.getBoundingClientRect();
         if (aboutRect.top < window.innerHeight) {
           // We're entering the about section, set it to black
           document.body.style.backgroundColor = '#080808';
         } else {
           // We're going somewhere else, reset to white
-          document.body.style.backgroundColor = '#ffffff';
+          document.body.style.backgroundColor = '#fffff2';
+          blobPath.setAttribute('fill', '#fcee4b');
         }
       } else {
-        document.body.style.backgroundColor = '#ffffff';
+        document.body.style.backgroundColor = '#fffff2';
+        blobPath.setAttribute('fill', '#fcee4b');
       }
       resetProjectElements();
       // Pause all videos when leaving work section
@@ -334,7 +344,7 @@ export function initPortfolioAnimations() {
     },
     onLeaveBack: () => {
       // Reset background when leaving the work section (going up)
-      document.body.style.backgroundColor = '#ffffff';
+      blobPath.setAttribute('fill', '#fcee4b');
       resetProjectElements();
       // Pause all videos when leaving work section
       projects.forEach((project) => {
@@ -366,8 +376,10 @@ export function initPortfolioAnimations() {
         projects[closestProject] &&
         projects[closestProject].dataset.brandColor
       ) {
-        document.body.style.backgroundColor =
-          projects[closestProject].dataset.brandColor;
+        blobPath.setAttribute(
+          'fill',
+          projects[closestProject].dataset.brandColor
+        );
       }
 
       // Reset the tracking variable and animate the closest project

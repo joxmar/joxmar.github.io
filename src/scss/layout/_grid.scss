@@ -4,7 +4,7 @@ html {
 
 body {
   transition: all 0.5s ease-in-out;
-  background-color: white;
+  background-color: #fffff2;
 }
 
 #intro {
@@ -112,7 +112,7 @@ body {
       z-index: 1;
 
       h2 {
-        color: white;
+        color: black;
         font-size: 86px;
         font-variation-settings: 'wght' 700, 'wdth' 100;
       }
@@ -136,7 +136,7 @@ body {
 
     > div {
       // grid span 2 columns
-      color: white;
+      color: black;
       font-variation-settings: 'wght' 300, 'wdth' 100;
 
       h5 {
@@ -154,7 +154,7 @@ body {
       gap: 1rem;
 
       .name h2 {
-        color: white;
+        color: black;
         font-size: 56px;
         line-height: 1;
       }
