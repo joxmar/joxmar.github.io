@@ -39,11 +39,12 @@ export default function initAnimations() {
     // Create a timeline to sequence the animations
     const subIntroTimeline = gsap.timeline({
       scrollTrigger: {
-        trigger: subIntro,
-        start: 'top 80%',
-        end: 'top 50%',
+        trigger: subIntro.parentNode,
+        start: 'top 20%',
+        end: 'top 80%',
         scrub: false,
         invalidateOnRefresh: true,
+        // markers: true,
       },
     });
 
@@ -71,12 +72,11 @@ export default function initAnimations() {
           autoAlpha: 0,
         },
         {
-          y: 50,
+          y: 0,
           autoAlpha: 1,
           duration: 1,
           ease: 'power2.out',
-        },
-        '+=0.2'
+        }
       ); // Small delay after h2 completes
   }
 
@@ -105,7 +105,7 @@ export default function initAnimations() {
   ScrollTrigger.create({
     trigger: '#about',
     start: 'top 100%',
-    end: '+=1000',
+    end: 'bottom 80%',
     // markers: true,
     onEnter: () => {
       document.body.style.backgroundColor = '#080808';
@@ -116,8 +116,9 @@ export default function initAnimations() {
     },
     onEnterBack: () => {
       document.body.style.backgroundColor = '#080808';
+      blobPath.setAttribute('fill', '#000000');
     },
-    onLeaveBack: () => {
+    onLeaveBack: () => {     
       document.body.style.backgroundColor = '#fffff2';
       blobPath.setAttribute('fill', '#fcee4b');
     },
@@ -141,13 +142,14 @@ export default function initAnimations() {
 
     ScrollTrigger.create({
       trigger: '.hor-scroller',
-      start: 'top 50%',
+      start: 'top 40%',
       // end: "bottom -20vh",
-      end: '+=1000',
+      end: '+=500',
       pin: true,
       animation: tween,
       scrub: 2,
       invalidateOnRefresh: true,
+      // markers: true,
     });
   }
 }
@@ -155,6 +157,9 @@ export default function initAnimations() {
 /**********************************************
   portfolio horizontal scroller
 ************************************************/
+
+// NOTE FOR REFACTORING: Look into info on how containerAnimation works, you might need it
+// for the optmized version of the portfolio scroller, look at this sample https://codepen.io/GreenSock/pen/WNjaxKp
 
 // Portfolio animation function that can be called after portfolio is created
 export function initPortfolioAnimations() {
@@ -169,10 +174,7 @@ export function initPortfolioAnimations() {
 
   // Mobile touch handling to prevent scroll conflicts
   let isPortfolioSection = false;
-  const isMobile =
-    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent
-    ) || window.innerWidth < 768;
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
 
   // Add touch event listeners for mobile
   const workSection = document.getElementById('work');
@@ -221,11 +223,7 @@ export function initPortfolioAnimations() {
 
   // Initialize project elements to be hidden
   projects.forEach((project) => {
-    const elements = [
-      project.querySelector('.name'),
-      project.querySelector('.feature-portfolio'),
-      project.querySelector('.project-details'),
-    ].filter(Boolean);
+    const elements = [project.querySelector('.name'), project.querySelector('.feature-portfolio'), project.querySelector('.project-details')].filter(Boolean);
 
     gsap.set(elements, {
       opacity: 0,
@@ -236,11 +234,8 @@ export function initPortfolioAnimations() {
   function getScrollDistance() {
     // Get the total width of all projects plus gaps
     const projectWidth = projects[0].offsetWidth;
-    const gap =
-      parseInt(window.getComputedStyle(projectContainer).gap) || 96 * 2; // 6rem = 96px fallback. x2 to account for left and right gap on the last project
-    const totalWidth =
-      projectWidth * projects.length +
-      (window.innerWidth / 3) * (projects.length - 1);
+    const gap = parseInt(window.getComputedStyle(projectContainer).gap) || 96 * 2; // 6rem = 96px fallback. x2 to account for left and right gap on the last project
+    const totalWidth = projectWidth * projects.length + (window.innerWidth / 3) * (projects.length - 1);
     const containerWidth = projectContainer.offsetWidth;
 
     return -(totalWidth - containerWidth);
@@ -300,14 +295,8 @@ export function initPortfolioAnimations() {
 
       if (closestProject !== null) {
         // Change background color
-        if (
-          projects[closestProject] &&
-          projects[closestProject].dataset.brandColor
-        ) {
-          blobPath.setAttribute(
-            'fill',
-            projects[closestProject].dataset.brandColor
-          );
+        if (projects[closestProject] && projects[closestProject].dataset.brandColor) {
+          blobPath.setAttribute('fill', projects[closestProject].dataset.brandColor);
         }
 
         // Animate project elements when they become active
@@ -372,14 +361,8 @@ export function initPortfolioAnimations() {
       });
 
       // Set background color for the closest project
-      if (
-        projects[closestProject] &&
-        projects[closestProject].dataset.brandColor
-      ) {
-        blobPath.setAttribute(
-          'fill',
-          projects[closestProject].dataset.brandColor
-        );
+      if (projects[closestProject] && projects[closestProject].dataset.brandColor) {
+        blobPath.setAttribute('fill', projects[closestProject].dataset.brandColor);
       }
 
       // Reset the tracking variable and animate the closest project
@@ -408,9 +391,7 @@ export function initPortfolioAnimations() {
     const featurePortfolio = currentProject.querySelector('.feature-portfolio');
     const projectDetails = currentProject.querySelector('.project-details');
 
-    const elementsToAnimate = [name, featurePortfolio, projectDetails].filter(
-      Boolean
-    );
+    const elementsToAnimate = [name, featurePortfolio, projectDetails].filter(Boolean);
 
     // Animate the current project elements with stagger
     if (elementsToAnimate.length > 0) {
@@ -441,11 +422,7 @@ export function initPortfolioAnimations() {
 
   function resetProjectElements() {
     projects.forEach((project) => {
-      const elements = [
-        project.querySelector('.name'),
-        project.querySelector('.feature-portfolio'),
-        project.querySelector('.project-details'),
-      ].filter(Boolean);
+      const elements = [project.querySelector('.name'), project.querySelector('.feature-portfolio'), project.querySelector('.project-details')].filter(Boolean);
 
       gsap.to(elements, {
         opacity: 0,

@@ -68,6 +68,10 @@ body {
 // skills section
 .sub-intro {
   max-width: calc(1100px + 2rem);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
 }
 
 // Work
@@ -115,6 +119,7 @@ body {
         color: black;
         font-size: 86px;
         font-variation-settings: 'wght' 700, 'wdth' 100;
+        text-shadow: 0 0 35px rgba(255, 255, 255, .7);
       }
     }
 
@@ -267,16 +272,8 @@ body {
 .body-vcard {
   // background-color: $dark-color;
   background: #000000; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to bottom,
-    $dark-color,
-    #000000
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to bottom,
-    $dark-color,
-    #000000
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: -webkit-linear-gradient(to bottom, $dark-color, #000000); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, $dark-color, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   display: flex;
   justify-content: center;

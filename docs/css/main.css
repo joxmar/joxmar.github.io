@@ -634,6 +634,11 @@ mark {
   opacity: 0;
 }
 
+.sub-intro p {
+  font-size: 28px;
+  margin-top: .75rem;
+}
+
 /* Helpers */
 .align-left {
   text-align: left;
@@ -812,6 +817,17 @@ body {
 }
 .sub-intro {
   max-width: calc(1100px + 2rem);
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
 }
 
 .work-container {
@@ -868,6 +884,7 @@ body {
   color: black;
   font-size: 86px;
   font-variation-settings: "wght" 700, "wdth" 100;
+  text-shadow: 0 0 35px rgba(255, 255, 255, 0.7);
 }
 .project .project-title-image .feature-portfolio {
   grid-column: 5/-1;
@@ -998,8 +1015,8 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-bottom: 2rem;
-  margin-top: 2rem;
+  margin-bottom: 4rem;
+  margin-top: 4rem;
 }
 .footer-logo img {
   width: 100%;
