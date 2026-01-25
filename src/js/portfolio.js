@@ -126,7 +126,7 @@ const portfolioData = [
 function createProjectHTML(project) {
   const mediaHTML =
     project.media.type === 'video'
-      ? `<video class="feature-portfolio" src="${project.media.src}" muted inline loop></video>`
+      ? `<video class="feature-portfolio" src="${project.media.src}" muted playsinline loop></video>`
       : `<img class="feature-portfolio" src="${project.media.src}" alt="${project.title}">`;
 
   return `

@@ -8,7 +8,7 @@ export default function initAnimations() {
   // GSAP intros
   const TLLOAD = gsap.timeline({
     default: {
-      ease: 'power2',
+      ease: 'linear',
     },
   });
 
@@ -25,7 +25,7 @@ export default function initAnimations() {
     // delay: 1,
   });
 
-  // sub-intro animation
+  // // sub-intro animation
   const subIntro = document.querySelector('.sub-intro h2');
   const subIntroP = document.querySelector('.sub-intro p');
 
@@ -81,22 +81,22 @@ export default function initAnimations() {
   }
 
   // Reusable title animation for .title-section elements
-  document.querySelectorAll('.title-section').forEach((title) => {
-    gsap.from(title, {
-      filter: 'blur(15px)',
-      y: '-10',
-      autoAlpha: 0,
-      duration: 1,
-      clearProps: 'filter',
-      scrollTrigger: {
-        trigger: title.parentElement,
-        start: 'top 80%',
-        end: 'top 50%',
-        scrub: 1,
-        invalidateOnRefresh: true,
-      },
-    });
-  });
+  // document.querySelectorAll('.title-section').forEach((title) => {
+  //   gsap.from(title, {
+  //     filter: 'blur(15px)',
+  //     y: '-10',
+  //     autoAlpha: 0,
+  //     duration: 1,
+  //     clearProps: 'filter',
+  //     scrollTrigger: {
+  //       trigger: title.parentElement,
+  //       start: 'top 80%',
+  //       end: 'top 50%',
+  //       scrub: 1,
+  //       invalidateOnRefresh: true,
+  //     },
+  //   });
+  // });
 
   /**********************************************
     Animate About section
@@ -105,18 +105,23 @@ export default function initAnimations() {
   ScrollTrigger.create({
     trigger: '#about',
     start: 'top 100%',
-    end: 'bottom 80%',
+    end: 'bottom 50%',
     // markers: true,
     onEnter: () => {
-      document.body.style.backgroundColor = '#080808';
+      document.body.style.backgroundColor = '#000000';
+      blobPath.setAttribute('fill', '#080808');
     },
     onLeave: () => {
       document.body.style.backgroundColor = '#fffff2';
       blobPath.setAttribute('fill', '#fcee4b');
+      document.querySelector('.footer-scroller').style.opacity = '1';
+      document.querySelector('.about').style.opacity = '0';
     },
     onEnterBack: () => {
-      document.body.style.backgroundColor = '#080808';
-      blobPath.setAttribute('fill', '#000000');
+      document.body.style.backgroundColor = '#000000';
+      blobPath.setAttribute('fill', '#080808');
+      document.querySelector('.footer-scroller').style.opacity = '0';
+      document.querySelector('.about').style.opacity = '1';
     },
     onLeaveBack: () => {     
       document.body.style.backgroundColor = '#fffff2';
@@ -149,7 +154,7 @@ export default function initAnimations() {
       animation: tween,
       scrub: 2,
       invalidateOnRefresh: true,
-      // markers: true,
+      // markers: {startColor: "blue", endColor: "blue"},
     });
   }
 }
@@ -164,279 +169,77 @@ export default function initAnimations() {
 // Portfolio animation function that can be called after portfolio is created
 export function initPortfolioAnimations() {
   const blobPath = document.getElementById('blob-path');
-  const projects = gsap.utils.toArray('.project');
-  const projectContainer = document.querySelector('.work-container');
+  let horzContainter = document.querySelector('.work-container');
 
-  if (projects.length === 0) {
-    console.warn('No portfolio projects found for animations');
-    return;
+  let sections = gsap.utils.toArray('.project');
+  // if tablet or mobile 
+  if (window.innerWidth < 768) {
+    var sectionxCount = sections.length + 2;
+  } else {
+    var sectionxCount = sections.length + .8;
   }
 
-  // Mobile touch handling to prevent scroll conflicts
-  let isPortfolioSection = false;
-  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
-
-  // Add touch event listeners for mobile
-  const workSection = document.getElementById('work');
-  if (workSection && isMobile) {
-    // Prevent momentum scrolling issues on mobile
-    let touchStartY = 0;
-
-    workSection.addEventListener(
-      'touchstart',
-      (e) => {
-        touchStartY = e.touches[0].clientY;
-      },
-      { passive: true }
-    );
-
-    workSection.addEventListener(
-      'touchmove',
-      (e) => {
-        if (isPortfolioSection) {
-          const touchCurrentY = e.touches[0].clientY;
-          const deltaY = Math.abs(touchCurrentY - touchStartY);
-
-          // Only prevent if it's a small vertical movement (likely accidental)
-          if (deltaY < 10) {
-            e.preventDefault();
-          }
-        }
-      },
-      { passive: false }
-    );
-
-    // Prevent overscroll behavior that might cause jumps
-    workSection.addEventListener(
-      'touchend',
-      (e) => {
-        if (isPortfolioSection) {
-          // Small delay to prevent momentum scroll conflicts
-          setTimeout(() => {
-            window.scrollTo(0, window.scrollY);
-          }, 1);
-        }
-      },
-      { passive: true }
-    );
-  }
-
-  // Initialize project elements to be hidden
-  projects.forEach((project) => {
-    const elements = [project.querySelector('.name'), project.querySelector('.feature-portfolio'), project.querySelector('.project-details')].filter(Boolean);
-
-    gsap.set(elements, {
-      opacity: 0,
-      y: 50,
-    });
-  });
-
-  function getScrollDistance() {
-    // Get the total width of all projects plus gaps
-    const projectWidth = projects[0].offsetWidth;
-    const gap = parseInt(window.getComputedStyle(projectContainer).gap) || 96 * 2; // 6rem = 96px fallback. x2 to account for left and right gap on the last project
-    const totalWidth = projectWidth * projects.length + (window.innerWidth / 3) * (projects.length - 1);
-    const containerWidth = projectContainer.offsetWidth;
-
-    return -(totalWidth - containerWidth);
-  }
-
-  let scrollTween = gsap.to(projects, {
-    x: getScrollDistance,
+  const scrollTween = gsap.to(sections, {
+    // xPercent: -100 * (sections.length - 1),
+    xPercent: -100 * (sectionxCount), // total ammount of sections plus 1 for the last section to go out of view
     ease: 'none',
     scrollTrigger: {
-      trigger: '#work',
-      start: 'top 0%',
+      trigger: '.work-container',
       pin: true,
       scrub: 1,
-      end: '+=3000',
+      start: 'top 0',
+      // end is the width of the conatiner so feels more natural and works on resize/ devices
+      end: ()=> "+=3000",
       // markers: true,
-      invalidateOnRefresh: true,
-      anticipatePin: 1, // Helps with mobile performance
+          
+      onLeaveBack: () => {        
+        blobPath.setAttribute('fill', '#fcee4b');
+      },
+    }
+  });
+
+  // Trigger for each section
+  sections.forEach((section, i) => {
+    ScrollTrigger.create({
+      trigger: section,
+      containerAnimation: scrollTween,
+      start: "left 50%", // When the left of the section hits the right of the viewport
       onEnter: () => {
-        // Prevent body scroll issues on mobile
-        document.body.style.overflowX = 'hidden';
-        isPortfolioSection = true;
+        // animate project
+        section.classList.add('project-animation');
+
+        // get the brand color from the data 'brand-color' attribute
+        let brandColor = section.dataset.brandColor;
+        blobPath.setAttribute('fill', brandColor);
+        // get video
+        let clientVideo = section.querySelector('.feature-portfolio');
+        if (clientVideo) {
+          clientVideo.play();
+        }
       },
       onLeave: () => {
-        document.body.style.overflowX = 'auto';
-        isPortfolioSection = false;
+        let clientVideo = section.querySelector('.feature-portfolio');
+        if (clientVideo) {
+          clientVideo.pause();
+        }
+        // console.log('video paused: ', clientVideo.paused);
+      },
+      onEnterBack: () => {
+        let brandColor = section.dataset.brandColor;
+        blobPath.setAttribute('fill', brandColor);
+        let clientVideo = section.querySelector('.feature-portfolio');
+        if (clientVideo) {
+          clientVideo.play();
+        }
       },
       onLeaveBack: () => {
-        document.body.style.overflowX = 'auto';
-        isPortfolioSection = false;
+        let clientVideo = section.querySelector('.feature-portfolio');
+        if (clientVideo) {
+          clientVideo.pause();
+        }
       },
-    },
-  });
-
-  // portfolio scroll trigger
-  ScrollTrigger.create({
-    trigger: '#work',
-    start: 'top 0%',
-    end: '+=3000',
-    scrub: 4,
-    onUpdate: (self) => {
-      // Get the viewport center point
-      const viewportCenter = window.innerWidth / 2;
-      let closestProject = null;
-      let closestDistance = Infinity;
-
-      // Find which project is closest to the center of the viewport
-      projects.forEach((project, index) => {
-        const rect = project.getBoundingClientRect();
-        const projectCenter = rect.left + rect.width / 2;
-        const distanceFromCenter = Math.abs(projectCenter - viewportCenter);
-
-        if (distanceFromCenter < closestDistance) {
-          closestDistance = distanceFromCenter;
-          closestProject = index;
-        }
-      });
-
-      if (closestProject !== null) {
-        // Change background color
-        if (projects[closestProject] && projects[closestProject].dataset.brandColor) {
-          blobPath.setAttribute('fill', projects[closestProject].dataset.brandColor);
-        }
-
-        // Animate project elements when they become active
-        animateProjectElements(closestProject);
-      }
-    },
-    onLeave: () => {
-      // Reset background when leaving the work section (going down)
-      // Check if we're going to the about section
-      const aboutSection = document.getElementById('about');
-      if (aboutSection) {
-        blobPath.setAttribute('fill', '#000000');
-        const aboutRect = aboutSection.getBoundingClientRect();
-        if (aboutRect.top < window.innerHeight) {
-          // We're entering the about section, set it to black
-          document.body.style.backgroundColor = '#080808';
-        } else {
-          // We're going somewhere else, reset to white
-          document.body.style.backgroundColor = '#fffff2';
-          blobPath.setAttribute('fill', '#fcee4b');
-        }
-      } else {
-        document.body.style.backgroundColor = '#fffff2';
-        blobPath.setAttribute('fill', '#fcee4b');
-      }
-      resetProjectElements();
-      // Pause all videos when leaving work section
-      projects.forEach((project) => {
-        const video = project.querySelector('video');
-        if (video) {
-          video.pause();
-        }
-      });
-    },
-    onLeaveBack: () => {
-      // Reset background when leaving the work section (going up)
-      blobPath.setAttribute('fill', '#fcee4b');
-      resetProjectElements();
-      // Pause all videos when leaving work section
-      projects.forEach((project) => {
-        const video = project.querySelector('video');
-        if (video) {
-          video.pause();
-        }
-      });
-    },
-    onEnterBack: () => {
-      // Find which project is currently closest to center
-      const viewportCenter = window.innerWidth / 2;
-      let closestProject = 0;
-      let closestDistance = Infinity;
-
-      projects.forEach((project, index) => {
-        const rect = project.getBoundingClientRect();
-        const projectCenter = rect.left + rect.width / 2;
-        const distanceFromCenter = Math.abs(projectCenter - viewportCenter);
-
-        if (distanceFromCenter < closestDistance) {
-          closestDistance = distanceFromCenter;
-          closestProject = index;
-        }
-      });
-
-      // Set background color for the closest project
-      if (projects[closestProject] && projects[closestProject].dataset.brandColor) {
-        blobPath.setAttribute('fill', projects[closestProject].dataset.brandColor);
-      }
-
-      // Reset the tracking variable and animate the closest project
-      currentActiveProject = -1;
-      animateProjectElements(closestProject);
-    },
-  });
-
-  // Function to animate project elements with stagger
-  let currentActiveProject = -1;
-  function animateProjectElements(activeIndex) {
-    // Only animate if we've moved to a different project
-    if (activeIndex === currentActiveProject) return;
-
-    currentActiveProject = activeIndex;
-    const currentProject = projects[activeIndex];
-    // console.log(currentProject);
-
-    if (!currentProject) return;
-
-    // Reset all project elements first
-    resetProjectElements();
-
-    // Get the elements to animate
-    const name = currentProject.querySelector('.name');
-    const featurePortfolio = currentProject.querySelector('.feature-portfolio');
-    const projectDetails = currentProject.querySelector('.project-details');
-
-    const elementsToAnimate = [name, featurePortfolio, projectDetails].filter(Boolean);
-
-    // Animate the current project elements with stagger
-    if (elementsToAnimate.length > 0) {
-      gsap.fromTo(
-        elementsToAnimate,
-        {
-          opacity: 0,
-          y: 50,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          stagger: 0.2,
-          ease: 'power2.out',
-        }
-      );
-    }
-
-    // Play video for active project
-    const activeVideo = currentProject.querySelector('video');
-    if (activeVideo) {
-      activeVideo.play().catch((error) => {
-        console.log('Video autoplay failed:', error);
-      });
-    }
-  }
-
-  function resetProjectElements() {
-    projects.forEach((project) => {
-      const elements = [project.querySelector('.name'), project.querySelector('.feature-portfolio'), project.querySelector('.project-details')].filter(Boolean);
-
-      gsap.to(elements, {
-        opacity: 0,
-        y: 50,
-        stagger: 0.2,
-        ease: 'power2.out',
-      });
-
-      // Pause videos for non-active projects
-      const video = project.querySelector('video');
-      if (video) {
-        video.pause();
-        video.currentTime = 0; // Reset to beginning
-      }
+      // markers: true,
     });
-  }
+  });
 }
+

@@ -24,8 +24,9 @@ body {
   padding-top: 15rem;
 }
 
-// intro section
-
+/*************************************** 
+intro section
+***************************************/
 .two-col {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -65,7 +66,9 @@ body {
   }
 }
 
-// skills section
+/*************************************** 
+intro section
+***************************************/
 .sub-intro {
   max-width: calc(1100px + 2rem);
   height: 100vh;
@@ -74,24 +77,23 @@ body {
   flex-flow: column;
 }
 
-// Work
+/*************************************** 
+Work
+***************************************/
 .work-container {
   display: flex;
   flex-wrap: nowrap;
   width: 100%;
   overflow: hidden;
-  padding: 3.5rem 2rem;
+  padding:0;
   gap: 0 6rem;
-}
-
-.work-container > div {
-  min-width: calc(100vw - 4rem);
 }
 
 .work-title-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 100vh;
 
   .title-section {
     width: 100%;
@@ -100,6 +102,13 @@ body {
 }
 
 .project {
+  min-width: 100vw;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  padding: 0 4rem;
+  gap: 2rem;
+  
   .project-showcase {
     display: flex;
     gap: 2rem;
@@ -114,6 +123,8 @@ body {
       grid-column: 1 / span 5;
       grid-row: 1 / 1;
       z-index: 1;
+      opacity: 0;
+      transform: translateY(20px);
 
       h2 {
         color: black;
@@ -129,6 +140,8 @@ body {
       aspect-ratio: 1.904 / 1;
       width: 100%;
       object-fit: cover;
+      opacity: 0;
+      transform: translateY(20px);
     }
   }
 
@@ -151,16 +164,29 @@ body {
     }
   }
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 768px) {    
+    // .project styles
+    padding: 0 2rem;
+    gap: 2rem;
+
+    &:not(:first-child) {
+      justify-content: flex-start;
+      padding-top: 5rem;
+
+      h2 {
+        margin-top: 2rem;
+      }
+    }
+    
+
     .project-title-image {
       display: flex;
       flex-direction: column-reverse;
       align-items: center;
-      gap: 1rem;
 
       .name h2 {
         color: black;
-        font-size: 56px;
+        font-size: 48px;
         line-height: 1;
       }
     }
@@ -169,11 +195,36 @@ body {
       display: flex;
       flex-direction: column-reverse;
       align-items: normal;
+      margin-top: 0;
+      
     }
   }
 }
 
-// about section
+.project-animation {
+  .name, .feature-portfolio {
+    animation: fadeUp 1s ease-in-out forwards;    
+  }
+
+  .feature-portfolio {
+    animation-delay: 0.5s;
+  }
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*************************************** 
+about section
+***************************************/
 .about {
   color: white;
   padding: 0 0 7rem 0;
@@ -189,6 +240,9 @@ body {
   }
 }
 
+/*************************************** 
+contact section
+***************************************/
 .contact {
   list-style: none inside;
   padding: 0;
@@ -206,6 +260,9 @@ body {
   }
 }
 
+/*************************************** 
+footer
+***************************************/
 .footer {
   padding: 6rem 0 0 0;
 }
@@ -218,16 +275,20 @@ body {
   overflow: hidden;
   white-space: nowrap;
   display: flex;
+  opacity: 0;
+  padding-left: 2rem;
 
   span {
     display: block;
   }
   @media only screen and (max-width: 768px) {
-    font-size: 120px;
+    font-size: 90px;
   }
 }
 
-// footer
+/*************************************** 
+collab
+***************************************/
 .collab {
   color: $dark-color;
 }
@@ -268,7 +329,9 @@ body {
   }
 }
 
-// vcard page
+/*************************************** 
+vcard page
+***************************************/
 .body-vcard {
   // background-color: $dark-color;
   background: #000000; /* fallback for old browsers */

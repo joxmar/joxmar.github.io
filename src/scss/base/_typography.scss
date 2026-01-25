@@ -75,6 +75,7 @@ p.intro {
   font-size: 40px;
 }
 
+
 mark {
   font-size: clamp(1.3rem, 3vw, 1.5rem);
   letter-spacing: -0.03rem;
@@ -96,7 +97,7 @@ mark {
 
 .title-section {
   font-size: clamp(3rem, 20vw, 12rem);
-  letter-spacing: -0.6rem;
+  letter-spacing: clamp(-.2rem,12vw,  -.6rem);
   font-variation-settings: 'wght' 700, 'wdth' 100;
 }
 
@@ -133,5 +134,8 @@ mark {
 .sub-intro h2 span,
 .sub-intro p {
   opacity: 0;
-  
+}
+
+.sub-intro p {  
+  font-size: 28px;
 }
