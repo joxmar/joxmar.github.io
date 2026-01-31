@@ -31,3 +31,14 @@ body {
   z-index: 99999;
   pointer-events: none;
 }
+
+@media (max-width: 768px) {
+  body {
+    cursor: auto;
+  }
+
+  .circle,
+  .inner-circle {
+    display: none;
+  }
+}

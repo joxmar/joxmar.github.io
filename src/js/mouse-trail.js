@@ -1,4 +1,7 @@
 export default function initMouseTrail() {
+  // Only enable on devices with a mouse/fine pointer
+  if (!window.matchMedia('(pointer: fine)').matches) return;
+
   // mouse follow
   const circle = document.getElementById('circle');
   const innerCircle = document.getElementById('innerCircle');

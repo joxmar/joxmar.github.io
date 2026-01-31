@@ -1270,6 +1270,15 @@ body {
   pointer-events: none;
 }
 
+@media (max-width: 768px) {
+  body {
+    cursor: auto;
+  }
+  .circle,
+  .inner-circle {
+    display: none;
+  }
+}
 /* Forms */
 .input__field {
   border: 1px solid #f5f5f5;
