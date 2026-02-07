@@ -38,6 +38,18 @@ const portfolioData = [
     },
   },
   {
+    title: 'Sunshine Cottage',
+    brandColor: '#00843d',
+    agency: 'Parallel, a brand agency',
+    role: 'Full-stack development',
+    technology: 'CSS, JavaScript, PHP, MySQL, WordPress',
+    url: 'https://sunshinecottage.org/',
+    media: {
+      type: 'video',
+      src: 'https://api.jelvir.com/portfolio/sunshine.mp4',
+    },
+  },
+  {
     title: 'ATKG Advisors',
     brandColor: '#0099CC',
     agency: 'Parallel, a brand agency',
