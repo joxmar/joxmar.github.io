@@ -240,6 +240,16 @@ about section
   }
 }
 
+.about-img {
+
+  @media only screen and (min-width: 768px) {
+    float: left;
+    width: 33%;
+    shape-outside: url(https://i0.wp.com/api.jelvir.com/wp-content/uploads/2026/02/martin.webp?w=1060&ssl=1);
+    shape-margin: 20px;
+  }
+}
+
 /*************************************** 
 contact section
 ***************************************/
