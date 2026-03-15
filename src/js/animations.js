@@ -62,7 +62,7 @@ export default function initAnimations() {
           duration: 1,
           ease: 'power2.out',
           stagger: 0.05,
-        }
+        },
       )
       // Then animate the paragraph after h2 completes
       .fromTo(
@@ -76,7 +76,7 @@ export default function initAnimations() {
           autoAlpha: 1,
           duration: 1,
           ease: 'power2.out',
-        }
+        },
       ); // Small delay after h2 completes
   }
 
@@ -123,7 +123,7 @@ export default function initAnimations() {
       document.querySelector('.footer-scroller').style.opacity = '0';
       document.querySelector('.about').style.opacity = '1';
     },
-    onLeaveBack: () => {     
+    onLeaveBack: () => {
       document.body.style.backgroundColor = '#fffff2';
       blobPath.setAttribute('fill', '#fcee4b');
     },
@@ -172,16 +172,16 @@ export function initPortfolioAnimations() {
   let horzContainter = document.querySelector('.work-container');
 
   let sections = gsap.utils.toArray('.project');
-  // if tablet or mobile 
+  // if tablet or mobile
   if (window.innerWidth < 768) {
     var sectionxCount = sections.length + 2;
   } else {
-    var sectionxCount = sections.length + .8;
+    var sectionxCount = sections.length + 0.9;
   }
 
   const scrollTween = gsap.to(sections, {
     // xPercent: -100 * (sections.length - 1),
-    xPercent: -100 * (sectionxCount), // total ammount of sections plus 1 for the last section to go out of view
+    xPercent: -100 * sectionxCount, // total ammount of sections plus 1 for the last section to go out of view
     ease: 'none',
     scrollTrigger: {
       trigger: '.work-container',
@@ -189,13 +189,13 @@ export function initPortfolioAnimations() {
       scrub: 1,
       start: 'top 0',
       // end is the width of the conatiner so feels more natural and works on resize/ devices
-      end: ()=> "+=3000",
+      end: () => '+=3000',
       // markers: true,
-          
-      onLeaveBack: () => {        
+
+      onLeaveBack: () => {
         blobPath.setAttribute('fill', '#fcee4b');
       },
-    }
+    },
   });
 
   // Trigger for each section
@@ -203,7 +203,7 @@ export function initPortfolioAnimations() {
     ScrollTrigger.create({
       trigger: section,
       containerAnimation: scrollTween,
-      start: "left 50%", // When the left of the section hits the right of the viewport
+      start: 'left 50%', // When the left of the section hits the right of the viewport
       onEnter: () => {
         // animate project
         section.classList.add('project-animation');
@@ -242,4 +242,3 @@ export function initPortfolioAnimations() {
     });
   });
 }
-

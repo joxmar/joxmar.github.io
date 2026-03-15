@@ -38,6 +38,18 @@ const portfolioData = [
     },
   },
   {
+    title: 'Ink Big',
+    brandColor: '#f15a27',
+    agency: 'Parallel, a brand agency',
+    role: 'Full-stack development',
+    technology: 'CSS, JavaScript, PHP, MySQL, WordPress',
+    url: 'https://ink-big.com/',
+    media: {
+      type: 'video',
+      src: 'https://api.jelvir.com/portfolio/ink-big.mp4',
+    },
+  },
+  {
     title: 'Sunshine Cottage',
     brandColor: '#00843d',
     agency: 'Parallel, a brand agency',
@@ -136,10 +148,7 @@ const portfolioData = [
 ];
 
 function createProjectHTML(project) {
-  const mediaHTML =
-    project.media.type === 'video'
-      ? `<video class="feature-portfolio" src="${project.media.src}" muted playsinline loop></video>`
-      : `<img class="feature-portfolio" src="${project.media.src}" alt="${project.title}">`;
+  const mediaHTML = project.media.type === 'video' ? `<video class="feature-portfolio" src="${project.media.src}" muted playsinline loop></video>` : `<img class="feature-portfolio" src="${project.media.src}" alt="${project.title}">`;
 
   return `
         <div class="project" data-brand-color="${project.brandColor}">
@@ -181,9 +190,7 @@ export default function initPortfolio() {
   }
 
   // Find the work title container
-  const workTitleContainer = workContainer.querySelector(
-    '.work-title-container'
-  );
+  const workTitleContainer = workContainer.querySelector('.work-title-container');
 
   if (!workTitleContainer) {
     console.error('Work title container not found');
@@ -191,9 +198,7 @@ export default function initPortfolio() {
   }
 
   // Clear existing projects (keep only the title)
-  const existingProjects = workContainer.querySelectorAll(
-    '.project:not(.work-title-container)'
-  );
+  const existingProjects = workContainer.querySelectorAll('.project:not(.work-title-container)');
   existingProjects.forEach((project) => project.remove());
 
   // Generate and insert portfolio projects

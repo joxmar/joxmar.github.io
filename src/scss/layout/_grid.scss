@@ -85,7 +85,7 @@ Work
   flex-wrap: nowrap;
   width: 100%;
   overflow: hidden;
-  padding:0;
+  padding: 0;
   gap: 0 6rem;
 }
 
@@ -108,7 +108,7 @@ Work
   justify-content: center;
   padding: 0 4rem;
   gap: 2rem;
-  
+
   .project-showcase {
     display: flex;
     gap: 2rem;
@@ -129,8 +129,10 @@ Work
       h2 {
         color: black;
         font-size: 86px;
-        font-variation-settings: 'wght' 700, 'wdth' 100;
-        text-shadow: 0 0 35px rgba(255, 255, 255, .7);
+        font-variation-settings:
+          'wght' 700,
+          'wdth' 100;
+        text-shadow: 0 0 35px rgba(255, 255, 255, 0.7);
       }
     }
 
@@ -140,6 +142,7 @@ Work
       aspect-ratio: 1.904 / 1;
       width: 100%;
       object-fit: cover;
+      object-position: top;
       opacity: 0;
       transform: translateY(20px);
     }
@@ -155,16 +158,20 @@ Work
     > div {
       // grid span 2 columns
       color: black;
-      font-variation-settings: 'wght' 300, 'wdth' 100;
+      font-variation-settings:
+        'wght' 300,
+        'wdth' 100;
 
       h5 {
-        font-variation-settings: 'wght' 600, 'wdth' 100;
+        font-variation-settings:
+          'wght' 600,
+          'wdth' 100;
         margin-bottom: 5px;
       }
     }
   }
 
-  @media only screen and (max-width: 768px) {    
+  @media only screen and (max-width: 768px) {
     // .project styles
     padding: 0 2rem;
     gap: 2rem;
@@ -177,7 +184,6 @@ Work
         margin-top: 2rem;
       }
     }
-    
 
     .project-title-image {
       display: flex;
@@ -196,14 +202,14 @@ Work
       flex-direction: column-reverse;
       align-items: normal;
       margin-top: 0;
-      
     }
   }
 }
 
 .project-animation {
-  .name, .feature-portfolio {
-    animation: fadeUp 1s ease-in-out forwards;    
+  .name,
+  .feature-portfolio {
+    animation: fadeUp 1s ease-in-out forwards;
   }
 
   .feature-portfolio {
@@ -241,7 +247,6 @@ about section
 }
 
 .about-img {
-
   @media only screen and (min-width: 768px) {
     float: left;
     width: 33%;
@@ -281,7 +286,9 @@ footer
   // font size clamp max 240px
   font-size: 240px;
   width: 100%;
-  font-variation-settings: 'wght' 900, 'wdth' 100;
+  font-variation-settings:
+    'wght' 900,
+    'wdth' 100;
   overflow: hidden;
   white-space: nowrap;
   display: flex;
