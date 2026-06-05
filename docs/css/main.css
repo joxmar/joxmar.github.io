@@ -725,6 +725,36 @@ mark {
   color: #fcee4b;
 }
 
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+
+.lenis [data-lenis-prevent],
+.lenis [data-lenis-prevent-wheel],
+.lenis [data-lenis-prevent-touch],
+.lenis [data-lenis-prevent-vertical],
+.lenis [data-lenis-prevent-horizontal] {
+  -ms-scroll-chaining: none;
+      overscroll-behavior: contain;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+.lenis.lenis-autoToggle {
+  -webkit-transition-property: overflow;
+  transition-property: overflow;
+  -webkit-transition-duration: 1ms;
+          transition-duration: 1ms;
+  transition-behavior: allow-discrete;
+}
+
 html {
   scroll-behavior: smooth !important;
 }
@@ -833,6 +863,7 @@ intro section
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
+  margin-top: 50vh;
 }
 
 /*************************************** 

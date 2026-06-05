@@ -1,9 +1,32 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Lenis from 'lenis';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function initAnimations() {
   const blobPath = document.getElementById('blob-path');
+
+  // Initialize Lenis smooth scrolling
+  // Initialize a new Lenis instance for smooth scrolling
+  const lenis = new Lenis({
+    duration: 3, // Duration of the scroll animation in seconds
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Custom easing function for a smooth effect
+    smoothWheel: true, // Enable smooth scrolling for mouse wheel events
+    // smoothTouch: false, // Disable smooth scrolling for touch events (optional)
+    // infinite: false, // Disable infinite scrolling (optional)
+  });
+
+  // Synchronize Lenis scrolling with GSAP's ScrollTrigger plugin
+  lenis.on('scroll', ScrollTrigger.update);
+
+  // Add Lenis's requestAnimationFrame (raf) method to GSAP's ticker
+  // This ensures Lenis's smooth scroll animation updates on each GSAP tick
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000); // Convert time from seconds to milliseconds
+  });
+
+  // Disable lag smoothing in GSAP to prevent any delay in scroll animations
+  gsap.ticker.lagSmoothing(0);
 
   // GSAP intros
   const TLLOAD = gsap.timeline({
@@ -40,7 +63,7 @@ export default function initAnimations() {
     const subIntroTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: subIntro.parentNode,
-        start: 'top 20%',
+        start: 'top 40%',
         end: 'top 80%',
         scrub: false,
         invalidateOnRefresh: true,
@@ -149,7 +172,7 @@ export default function initAnimations() {
       trigger: '.hor-scroller',
       start: 'top 40%',
       // end: "bottom -20vh",
-      end: '+=500',
+      end: '+=1500',
       pin: true,
       animation: tween,
       scrub: 2,
@@ -178,10 +201,12 @@ export function initPortfolioAnimations() {
   } else {
     var sectionxCount = sections.length + 0.9;
   }
+  console.log(sections[0].offsetWidth);
 
   const scrollTween = gsap.to(sections, {
     // xPercent: -100 * (sections.length - 1),
-    xPercent: -100 * sectionxCount, // total ammount of sections plus 1 for the last section to go out of view
+    // xPercent: -100 * sectionxCount, // total ammount of sections plus 1 for the last section to go out of view
+    x: () => -(horzContainter.scrollWidth - window.innerWidth + sections[0].offsetWidth), // total ammount of sections plus 1 for the last section to go out of view
     ease: 'none',
     scrollTrigger: {
       trigger: '.work-container',
@@ -189,7 +214,9 @@ export function initPortfolioAnimations() {
       scrub: 1,
       start: 'top 0',
       // end is the width of the conatiner so feels more natural and works on resize/ devices
-      end: () => '+=3000',
+      // end: () => '+=3000',
+      end: () => `+=${horzContainter.scrollWidth * 0.5}`,
+      invalidateOnRefresh: true,
       // markers: true,
 
       onLeaveBack: () => {
